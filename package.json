@@ -5,8 +5,6 @@
   },
   "dependencies": {
     "laravel-elixir": "^3.0.0",
-    "bootstrap-sass": "^3.0.0",
-    "normalize.css": "*",
     "laravel-elixir": "*",
     "laravel-elixir-livereload": "*",
     "laravel-elixir-sass-compass": "*"
