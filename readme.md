@@ -1,3 +1,9 @@
+# My Laravel Blog
+
+This project is in progress.
+
+The purpose of this project, is to make a better blog platform using L5 and AngularJS.
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
