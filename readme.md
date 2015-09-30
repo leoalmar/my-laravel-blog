@@ -2,7 +2,7 @@
 
 This project is in progress.
 
-The purpose of this project, is to make a better blog platform using L5 and AngularJS.
+The purpose of this project is to make a better blog platform using L5 and AngularJS.
 
 ## Laravel PHP Framework
 
