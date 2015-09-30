@@ -12,9 +12,6 @@ abstract class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-
-
-
     /**
 	 * Upload a base64 file (need to be improved).
 	 *

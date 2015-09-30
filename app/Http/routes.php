@@ -1,16 +1,32 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+/* ================ SITE'S ROUTES ============================================================= */
+$router->group(['as' => 'site.'], function() { 
+
+	Route::get('/', ['as' => 'home', 'uses' => 'Site\HomeController@index']);
+
+});
+/* ============================================================================================= */
+
+
+/* ================ ADMIN'S ROUTES ============================================================= */
+$router->group(['middleware' => ['AdminAuth'], 'prefix' => 'admin'], function() { 
+
+	Route::get('check', ['as' => 'admin.check', 'uses' => 'Admin\UsersController@check']);
+	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Admin\UsersController@logout' ]);
+
+	Route::resource('users', 'Admin\UsersController');
+	Route::resource('permissions', 'Admin\PermissionsController');
+
+});
+/* ============================================================================================= */
+
+
+
+/* 
+ *	Return view dinamically Angular Router
+ */
+Route::get('view/{name_view}', function ($name_view) {
+	return view($name_view);
 });
