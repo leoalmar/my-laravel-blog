@@ -1,0 +1,47 @@
+body { 
+	padding-top: 70px; 
+	padding-bottom: 100px;
+
+	.btn-add{
+		position: relative;
+		z-index: 1029;
+		float: right;
+		margin-top: -56px;
+		margin-right: 3px;
+	
+		&.ng-enter{
+			@include single-transition(all, 500ms);
+			@include opacity(0);
+		}
+		&.ng-enter-active{
+			@include single-transition(all, 500ms);
+			@include opacity(1);
+		}
+		&.ng-leave{
+			@include single-transition(all, 500ms);
+			@include opacity(1);
+		}
+		&.ng-leave-active{
+			@include single-transition(all, 500ms);
+			@include opacity(0);
+		}
+	}
+
+	.breadcrumb{
+		background-color: $default-color !important;
+		color: silver;
+		strong{
+			color: white;
+		}
+		a{
+			font-weight: bold;
+		}
+	}
+
+}
+
+
+
+.ng-ckeditor{
+	border:0;
+}

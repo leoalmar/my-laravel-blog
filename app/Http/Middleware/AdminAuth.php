@@ -20,14 +20,17 @@ class AdminAuth {
 		/*
 		 * Check if the user is logged, then return HTTP 401 status
 		 */
-		if(!Sentinel::check()){
+		if(!$user = Sentinel::check()){
         	return response(['success' => false],401);
         }
 
         /*
          + Get the route name to make a validation of the user's permission relative to the resource requested
          */
-		$name 		= $request->route()->getName();		
+		$name 		= $request->route()->getName();
+
+//dd($user->roles);
+
 		$current 	= explode('.',$name); 
 		$resource 	= $current[1];
 		/*

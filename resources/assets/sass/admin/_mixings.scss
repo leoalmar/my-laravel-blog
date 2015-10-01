@@ -1,0 +1,51 @@
+@mixin media($media) {
+
+  @if $media == xs {
+    @media only screen and (max-width: $xs-max) { @content; }    
+  }
+
+  @else if $media == sm {
+    @media only screen and (min-width: $sm-min) and (max-width: $sm-max) { @content; }
+  }
+
+  @else if $media == md {
+    @media only screen and (min-width: $md-min) and (max-width: $md-max) { @content; }
+  }
+
+  @else if $media == lg {
+    @media only screen and (min-width: $lg-min){ @content; }
+  }
+  
+}
+
+@mixin bigger($media) {
+
+  @if $media == xs {
+    @media only screen and (min-width: $sm-min) { @content; }    
+  }
+
+  @else if $media == sm {
+    @media only screen and (min-width: $md-min) { @content; }
+  }
+
+  @else if $media == md {
+    @media only screen and (min-width: $lg-min) { @content; }
+  }
+  
+}
+
+@mixin smaller($media) {
+
+  @if $media == sm {
+    @media only screen and (max-width: $xs-max) { @content; }
+  }
+
+  @else if $media == md {
+    @media only screen and (max-width: $sm-max) { @content; }
+  }
+
+  @else if $media == lg {
+    @media only screen and (max-width: $md-max){ @content; }
+  }
+  
+}

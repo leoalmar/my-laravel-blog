@@ -5,7 +5,6 @@ angular.module('my-laravel-blog',[
 
 	'ui.router',
 	'ui.mask',
-	'ui.sortable',
 	'ui.bootstrap',
 
 	'factories.general',

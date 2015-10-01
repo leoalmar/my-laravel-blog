@@ -18,8 +18,8 @@ require('laravel-elixir-sass-compass');
 
 elixir(function(mix) {
     
-	mix.compass('app.scss','public/site/css/',{ style: "compressed", sass: "./resources/assets/sass/site" });
-	//mix.compass('app.scss','public/admin/css/',{style: "compressed",sass: "./resources/assets/sass/admin"});
+	//mix.compass('app.scss','public/site/css/',{ style: "compressed", sass: "./resources/assets/sass/site" });
+	mix.compass('app.scss','public/admin/css/',{style: "compressed",sass: "./resources/assets/sass/admin"});
 
 	mix.scripts([
 	    	'admin/lib/*/*.min.js',

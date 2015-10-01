@@ -9,7 +9,6 @@
 	<title>Painel Administrativo</title>
 
 	[[ Html::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css') ]]
-	[[ Html::style('//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/sandstone/bootstrap.min.css') ]]
 	[[ Html::style('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css') ]]
 	[[ Html::style('admin/css/app.css') ]]
 
@@ -26,9 +25,7 @@
     				<span class="icon-bar"></span>
     				<span class="icon-bar"></span>
     			</button>
-    			<a class="navbar-brand" href="#" ui-sref="home">
-    				<img ng-src="{{ getImage('layout/logo-mamamiga.png',150,150) }}" alt="Mamamiga" style="margin-top:-95px;">
-    			</a>
+    			<a class="navbar-brand" href="#" ui-sref="home">My Laravel Blog - Dashboard</a>
     		</div>
 
     		<div ng-if=" $state.current.name != 'login' " class="collapse navbar-collapse" id="dashboard-menu">
@@ -97,12 +94,14 @@
 	[[ Html::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') ]]
 	[[ Html::script('/admin/js/ckeditor/ckeditor.js') ]]
 		
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-aria.min.js') ]]
+
+
+	
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js') ]]
 	
 	[[ Html::script('//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_pt-br.js') ]]
 	

@@ -1,23 +1,24 @@
 angular.module('dashboard',[
-								'ngSanitize',
-								'ngMessages',
-								'ngPassword',
-								'ngAnimate',
-								'ui.router',
-								'ui.mask',
-								'ui.sortable',
-								'ui.bootstrap',
+	'ngSanitize',
+	'ngPassword',
+	'ngAnimate',
 
-								'factories.general',
-								'directives.general',
-								'filters.general',
+	
+	'ui.router',
+	'ui.mask',
+	'ui.sortable',
+	'ui.bootstrap',
 
-								'services.users',
-								'services.permissions',
+	'factories.general',
+	'directives.general',
+	'filters.general',
 
-								'controller.dashboard',
-								'controller.users'								
-							])
+	'services.users',
+	'services.permissions',
+
+	'controller.dashboard',
+	'controller.users'								
+])
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider){
 	
@@ -189,19 +190,12 @@ angular.module('dashboard',[
     		activeMenu : ['home'],
     		permissions : false
     	},
-    	"banners" : {
-    		icon : "picture-o",
-    		label : "Banners",
-    		sref : "banners",
-    		activeMenu : ['banners','add_banner','banner'],
-    		permissions : ["Banners"]
-    	},
     	"users" : {
     		icon : "users",
     		label : "Usuários",
     		sref : "users",
     		activeMenu : ['users','add_user','user'],
-    		permissions : ["Usuários"]
+    		permissions : ["user.view"]
     	}
     };
 
@@ -220,17 +214,7 @@ angular.module('dashboard',[
 	    );
     };
 
-    $rootScope.logout = function(){
 
-    	var logged = UsersService.logout()
-    		.then(function(data){
-    			$rootScope.user = false;
-    			$state.go("login");
-		    },function(){
-	    		return false;
-		   	}
-	    );
-    };
 
     $rootScope.hasAccess = function(permissions){
 
@@ -262,66 +246,10 @@ angular.module('dashboard',[
     	return false;
     };
 
-    /*
-     * Function used for add active class to activate menu based on first position of route name
-     */
-    $rootScope.activeMenu = function(stateName){
-    	var names = $state.current.name.split('.');
-    	for(i in stateName){    		
-    		if (stateName[i] == names[0]){
-    			return true;
-    		} 
-    	}
-    	return false;
-    };
 
-    $rootScope.getImage = function(image, width, height, effects) {
 
-    	var file = image.split('.');
-    	var size = (width && height)? width+"x"+height: "";
-    	var effects = (effects)? "-"+effects.join('-'):""
-    	var path = "/img/"+file[0]+"-image("+size+effects+")."+file[1];
-    		    		
-    	return path;
-    };
+
 	
-
-    $rootScope.modal = {
-
-    	confirm : function(params){
-    		$modal.open({
-    			animation: false,
-    			keyboard: true,
-    			templateUrl: 'view/admin.modal.confirm',
-    			size: "md",
-    			resolve: {
-    				params: function(){
-    					return params;
-    				}
-    			},
-    			controller:function($scope, $modalInstance, params){
-			
-    				$scope.params = params;
-
-    				$scope.ok = function () {
-    					$modalInstance.close();
-    				};
-
-    				$scope.cancel = function () {
-    					$modalInstance.dismiss('Cancel');
-    				};
-    			}
-    		})
-    		.result.then(
-    			function () {
-					params.ok.func(params.ok.params);
-				}, 
-				function (reason) {
-					console.log(reason);
-				}
-			);		    
-    	}
-    };
 
 })
 

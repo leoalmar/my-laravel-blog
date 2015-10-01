@@ -11,15 +11,26 @@ $router->group(['as' => 'site.'], function() {
 
 
 /* ================ ADMIN'S ROUTES ============================================================= */
-$router->group(['middleware' => ['AdminAuth'], 'prefix' => 'admin'], function() { 
+$router->group(['as' => 'admin.'], function() use ($router) {
 
-	Route::get('check', ['as' => 'admin.check', 'uses' => 'Admin\UsersController@check']);
-	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Admin\UsersController@logout' ]);
+	Route::get('dashboard', ['as' => 'home', 'uses' => 'Admin\HomeController@index']);	
+	
+	$router->group(['prefix' => 'admin'], function() use ($router) {
 
-	Route::resource('users', 'Admin\UsersController');
-	Route::resource('permissions', 'Admin\PermissionsController');
+		Route::post('authenticate', ['as' => 'authenticate', 'uses' => 'Admin\UsersController@login' ]);
+		
+		$router->group(['middleware' => ['AdminAuth']], function() { 
 
+			Route::get('check', ['as' => 'check', 'uses' => 'Admin\UsersController@check']);
+			Route::get('logout', ['as' => 'logout', 'uses' => 'Admin\UsersController@logout' ]);
+
+			Route::resource('users', 'Admin\UsersController');
+			Route::resource('permissions', 'Admin\PermissionsController');
+
+		});
+	});
 });
+
 /* ============================================================================================= */
 
 
