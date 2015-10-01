@@ -15,7 +15,9 @@
 	
 </head>
 <body ng-app="my-laravel-blog">
-	
+		
+	<div ng-include src="'[[ url('view/site.partials.header') ]]'"></div>
+
 	<div class="ui-view-container">
 		<div ui-view></div>
 	</div>
@@ -33,15 +35,15 @@
 
 	[[ Html::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') ]]
 
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.min.js') ]]
-	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-aria.min.js') ]]
+
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js') ]]
 	
-	[[ Html::script('//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_pt-br.js') ]]
 	
+	[[ Html::script('site/js/angular-locale/angular-locale_pt-br.js') ]]	
 	[[ Html::script('site/js/app.js') ]]
 
 	@if ( Config::get('app.debug') )

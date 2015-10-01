@@ -34,13 +34,13 @@ elixir(function(mix) {
 
 	mix.scripts([
 	    	'site/lib/*/*.min.js',
-	    	'site/app.js',
-	    	'site/global.js',
 	    	'site/controllers/*.js',
 	    	'site/services/*.js',
 	    	'site/factories/*.js',
 	    	'site/directives/*.js',
-	    	'site/filters/*.js'
+	    	'site/filters/*.js',
+	    	'site/app.js',
+	    	'site/global.js'
 	    ], 'public/site/js/app.js');
 
 
