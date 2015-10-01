@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $toView = [];
 
-        return view('site.home.index', $toView);
+        return view('site.index', $toView);
     }
 
 }

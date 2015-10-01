@@ -14,18 +14,12 @@
 	[[ Html::style('site/css/app.css') ]]
 	
 </head>
-<body>
+<body ng-app="my-laravel-blog">
+	
+	<div class="ui-view-container">
+		<div ui-view></div>
+	</div>
 
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.4&appId=954795864564426";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-
-	@yield('content')
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +29,19 @@
     <![endif]-->
 
 	[[ Html::script('//code.jquery.com/jquery-2.1.4.min.js') ]]
+	[[ Html::script('//code.jquery.com/ui/1.11.4/jquery-ui.min.js') ]]
+
 	[[ Html::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') ]]
+
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.min.js') ]]
+	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-aria.min.js') ]]
+	
+	[[ Html::script('//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_pt-br.js') ]]
+	
 	[[ Html::script('site/js/app.js') ]]
 
 	@if ( Config::get('app.debug') )

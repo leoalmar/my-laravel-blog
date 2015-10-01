@@ -31,13 +31,18 @@ elixir(function(mix) {
 	    	'admin/directives/*.js',
 	    	'admin/filters/*.js'
 	    ], 'public/admin/js/app.js');
-   
+
 	mix.scripts([
-			'site/jquery.form.js',
-			'site/jquery.mobile.1.3.2.min.js',
-			'site/jquery.noty.packaged.min.js',
-			'site/global.js'
-		], 'public/site/js/app.js');
+	    	'site/lib/*/*.min.js',
+	    	'site/app.js',
+	    	'site/global.js',
+	    	'site/controllers/*.js',
+	    	'site/services/*.js',
+	    	'site/factories/*.js',
+	    	'site/directives/*.js',
+	    	'site/filters/*.js'
+	    ], 'public/site/js/app.js');
+
 
     mix.livereload();
 

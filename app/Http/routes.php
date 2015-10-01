@@ -2,7 +2,7 @@
 
 
 /* ================ SITE'S ROUTES ============================================================= */
-$router->group(['as' => 'site.'], function() { 
+$router->group(['as' => 'site.'], function() {
 
 	Route::get('/', ['as' => 'home', 'uses' => 'Site\HomeController@index']);
 
@@ -25,7 +25,7 @@ $router->group(['middleware' => ['AdminAuth'], 'prefix' => 'admin'], function() 
 
 
 /* 
- *	Return view dinamically Angular Router
+ *	Return view dinamically for Angular Router
  */
 Route::get('view/{name_view}', function ($name_view) {
 	return view($name_view);
