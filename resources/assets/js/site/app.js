@@ -1,6 +1,5 @@
 angular.module('my-laravel-blog',[
 	'ngSanitize',
-	'ngPassword',
 	'ngAnimate',
 	'jcs-autoValidate',
 
@@ -62,6 +61,10 @@ angular.module('my-laravel-blog',[
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 
+
+    /*
+     * Header menu items configuration
+     */
     $rootScope.sideMenu = {
     	"home" : {
     		icon : "home",

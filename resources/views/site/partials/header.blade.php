@@ -13,15 +13,15 @@
 
 		
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			
 			<ul class="nav navbar-nav">
 				<li ng-repeat="item in sideMenu" ng-class="{ active: activeMenu(item) }" >
 					<a href="#" ui-sref="{{ item.sref }}" ui-reload="true" tooltip-placement="bottom" tooltip="{{ item.label }}">
 						<span><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}</span>
 					</a>
-				</li> 
-
-
+				</li>
 			</ul>
+
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>

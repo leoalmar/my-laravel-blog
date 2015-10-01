@@ -1,0 +1,32 @@
+/* Have to set height explicity on ui-view 
+to prevent collapsing during animation*/
+.ui-view-container {
+	position: relative;
+	
+	[ui-view]{
+
+		&.ng-enter, 
+		&.ng-leave {
+			position: absolute;
+			width: 100%;
+		}
+		&.ng-enter {
+			@include single-transition(all, 500ms);
+			opacity: 0;
+			@include scale(0.5, 0.5, 0.5);
+		}
+		&.ng-enter-active {
+			opacity: 1;
+			@include scale(1, 1, 1);
+		}
+		&.ng-leave {
+			@include single-transition(all, 200ms);
+			opacity: 1; 
+			@include translate(0, 0, 0);
+		}
+		&.ng-leave-active {
+			opacity: 0;
+			@include translate(0, 100px, 0);
+		}
+	}
+}
