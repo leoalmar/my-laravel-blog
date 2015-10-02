@@ -74,15 +74,19 @@
 		</div>
 	</div>
 
+
+<?php
+/*
 	<pre>
-		user = {{ user.name }}
+		user = {{ user }}
 		<!-- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams -->
 		$state = {{ $state.current }}
 		$stateParams = {{ $stateParams }}
 		$state full url = {{ $state.$current.url.source }}
 		<!-- $state.$current is not a public api, we are using it to display the full url for learning purposes-->
 	</pre>
-
+*/
+?>
 	
 	[[ Html::script('//code.jquery.com/jquery-2.1.4.min.js') ]]
 	[[ Html::script('//code.jquery.com/ui/1.11.4/jquery-ui.min.js') ]]

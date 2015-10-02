@@ -1,4 +1,6 @@
-<?php namespace App\Http\Middleware;
+<?php 
+
+namespace App\Http\Middleware;
 
 use Closure;
 use Cartalyst\Sentinel\Native\Facades\Sentinel as Sentinel;
@@ -16,6 +18,11 @@ class AdminAuth {
 	public function handle($request, Closure $next)
 	{
 
+        /*
+         + Get the route name to make a validation of the user's permission relative to the resource requested
+         */
+		$route_name = $request->route()->getName();
+		
 		/*
 		 * Check if the user is logged, then return HTTP 401 status
 		 */
@@ -23,57 +30,33 @@ class AdminAuth {
         	return response(['success' => false], 401);
         }
 
-        /*
-         + Get the route name to make a validation of the user's permission relative to the resource requested
-         */
-		$name = $request->route()->getName();
+        if($route_name == "admin.check") {
+        	
+        	// Delete the password of user
+        	unset($user->password);
+			
+			// Force the user comes with the Roles
+			$user->roles; 
 
-//dd($user->roles);
-dd($name);
+        	return response(['success' => true, 'user' => $user], 200);
+        }
 
 		/*
 		 + Array of routes without permissions needed
 		 */
 		$free_access = [];
 
-		if( !in_array( $name ,$free_access) ){
+		if( !in_array( $route_name ,$free_access) ){
 
-
-			$action_name = $request->route()->getAction()["as"];
-
-
-			$sub_items = [
-				/*
-				"areas" => [
-					"index" => ["mines","hotels","places","districts","financials","technologies"],
-					"show" => ["mines","hotels","places","districts","financials","technologies"],
-					"update" => ["mines","hotels","places","districts","financials","technologies"],
-				]
-				*/
-			];
-
-
-			if( isset($config[ $resource ] ) ){
-
-				if( !$$user->hasAccess( $config[ $resource ] ) ){
-
-
-					foreach ($sub_items[$resource] as $k => $item) {
-
-						if( $name == "admin.".$resource.".".$k ){
-
-							foreach ($item as $permission) {
-
-								if( $$user->hasAccess( $config[ $permission ] )){
-									return $next($request);
-								}
-							}
-						} 
+			foreach ($user->roles as $k => $role) {		
+				foreach ($role->permissions as $j => $permission) {
+					if($route_name == $permission){
+						return $next($request);
 					}
-
-					return response(['success' => true],401);
 				}
 			}
+
+			return response(['success' => true],401);
 		}
 
 		return $next($request);

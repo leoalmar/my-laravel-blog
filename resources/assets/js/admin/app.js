@@ -2,7 +2,6 @@ angular.module('dashboard',[
 	'ngSanitize',
 	'ngPassword',
 	'ngAnimate',
-
 	
 	'ui.router',
 	'ui.mask',
@@ -171,10 +170,13 @@ angular.module('dashboard',[
 			resolve: {
 				user : function($rootScope, UsersService) {
 					return UsersService.check().then(function(data){
-						return data.user;
+						$rootScope.user = data.data.user;
 					});
 				}
 			},
+			breadcrumbs : [
+				{ label : 'Home' }
+			]
 	    },
 	    {
 	    	name : 'login',
@@ -230,7 +232,7 @@ angular.module('dashboard',[
     		icon : "users",
     		sref : "users",
     		activeState : ['users'],
-    		permitions : ["user.view"]
+    		permissions : ["admin.user.view"]
     	},
     };
 
@@ -251,37 +253,27 @@ angular.module('dashboard',[
 
     
 
-    $rootScope.hasAccess = function(permissions){
+    $rootScope.hasAccess = function(item){
 
-    	//return true;
+    	if(!item.permissions) return true;
 
-    	if(!permissions) return true;
+    	var roles = $rootScope.user.roles;
 
-    	var groups = $rootScope.user.groups;
+    	var permissions = [];
 
-    	var groups_permissions = groups.map(function(e, index){
-    		return e.permissions;
-    	});
-    	
-    	for( i in groups_permissions){    		
+    	for(i in roles){
 
-    		var p = groups_permissions[i];
+	    	for( permission in roles[i].permissions){
 
-    		for( k in p){	    		
-
-    			for( x in permissions ){
-
-		    		if(p[k] == 1 && k == permissions[x]){
-		    			return true;
-		    		}
-    			}
-	    	}
+				for (k in item.permissions) {
+					
+					if( permission == item.permissions[k] ) return true;
+				}
+			}	    	
     	}
 
     	return false;
     };
-
-
 
 
 	
