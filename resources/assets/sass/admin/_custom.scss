@@ -6,7 +6,7 @@ body {
 		position: relative;
 		z-index: 1029;
 		float: right;
-		margin-top: -56px;
+		margin-top: -53px;
 		margin-right: 3px;
 	
 		&.ng-enter{
@@ -44,4 +44,9 @@ body {
 
 .ng-ckeditor{
 	border:0;
+}
+
+
+.table > tbody > tr > td {
+     vertical-align: middle;
 }

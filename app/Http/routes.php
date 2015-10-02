@@ -17,11 +17,12 @@ Route::get('dashboard', ['as' => 'admin.home', 'uses' => 'Admin\HomeController@i
 $router->group(['prefix' => 'admin'], function() use ($router) {
 	
 	Route::post('authenticate', ['as' => 'admin.authenticate', 'uses' => 'Admin\UsersController@login' ]);
+	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Admin\UsersController@logout' ]);
 	
 	$router->group(['middleware' => ['AdminAuth']], function() { 
 
-		Route::get('check', ['as' => 'admin.check', 'uses' => 'Admin\UsersController@check']);
-		Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Admin\UsersController@logout' ]);
+		Route::get('check', ['as' => 'admin.check', 'uses' => 'Admin\UsersController@check']); 
+
 
 		Route::resource('users', 'Admin\UsersController');
 		Route::resource('permissions', 'Admin\PermissionsController');
@@ -30,8 +31,6 @@ $router->group(['prefix' => 'admin'], function() use ($router) {
 });
 
 /* ============================================================================================= */
-
-
 
 /* 
  *	Return view dinamically for Angular Router

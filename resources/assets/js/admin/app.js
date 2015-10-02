@@ -266,8 +266,29 @@ angular.module('dashboard',[
     	return false;
     };
 
+    $rootScope.logout = function(){
 
+    	UsersService
+    		.logout()
+    		.then(function(data){
+    	
+    			$rootScope.user = false;
+    			$state.go("login");
+		    
+			},function(){
+		    	return false;
+			});
+    };
 	
+	$rootScope.getImage = function(image, width, height, effects) {
+
+    	var file = image.split('.');
+    	var size = (width && height) ? width+"x"+height : "";
+    	var effects = (effects) ? "-" + effects.join('-') : "";
+    	var path = "/img/"+file[0]+"-image("+size+effects+")."+file[1];
+    	
+    	return path;
+    };
 
 })
 

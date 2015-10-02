@@ -18,7 +18,7 @@ class UsersController extends Controller {
 	 */
 	public function index()
 	{
-		$users = Sentinel::getUserProvider()->createModel()->orderBy('first_name')->get();
+		$users = Sentinel::getUserRepository()->orderBy('first_name')->get();
 		return response()->json($users);
 	}
 
@@ -33,7 +33,9 @@ class UsersController extends Controller {
 		$data = Request::json()->all();
 
 		if( isset( $data["image"] ) && $data["image"] != "" ){
+
 			$data["image"] = parent::uploadFile($data["image"],"img/users");
+
 		}
 		
 		unset($data["password_confirmation"]);
@@ -42,7 +44,7 @@ class UsersController extends Controller {
 
 		$user = Sentinel::createUser($data);
 		
-		return response("success",201);
+		return response()->json(["success" => true], 201);
 	}
 
 	/**
@@ -140,8 +142,10 @@ class UsersController extends Controller {
 	}
 
 	public function logout(){
+
 		Sentinel::logout();
 		return response(["success" => true],200);
+		
 	}
 
 

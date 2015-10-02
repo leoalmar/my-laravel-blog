@@ -17,6 +17,8 @@ class UserTableSeeder extends Seeder {
 		$user = Sentinel::registerAndActivate([
 		    'email'    => 'admin@my-laravel-blog.com',
 		    'password' => 'password',
+		    'first_name' => 'Softzar',
+		    'last_name' => 'Administrator',
 		]);
 
 		$role = Sentinel::getRoleRepository()->createModel()->create([

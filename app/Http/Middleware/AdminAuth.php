@@ -46,20 +46,11 @@ class AdminAuth {
 		 */
 		$free_access = [];
 
-		if( !in_array( $route_name ,$free_access) ){
+		if( in_array( $route_name ,$free_access) || $user->hasAccess($route_name) ){
+			return $next($request);
+		}	
 
-			foreach ($user->roles as $k => $role) {		
-				foreach ($role->permissions as $j => $permission) {
-					if($route_name == $permission){
-						return $next($request);
-					}
-				}
-			}
-
-			return response(['success' => true],401);
-		}
-
-		return $next($request);
+		return response(['success' => true],401);
 
 	}
 }
