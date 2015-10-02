@@ -116,8 +116,6 @@ class UsersController extends Controller {
 		return response()->json(["success" => true]);
 	}
 
-
-
 	public function login(){
 
 		$creadentials = Request::json()->all();

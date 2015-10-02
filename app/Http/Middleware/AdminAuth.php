@@ -16,44 +16,31 @@ class AdminAuth {
 	public function handle($request, Closure $next)
 	{
 
-
 		/*
 		 * Check if the user is logged, then return HTTP 401 status
 		 */
 		if(!$user = Sentinel::check()){
-        	return response(['success' => false],401);
+        	return response(['success' => false], 401);
         }
 
         /*
          + Get the route name to make a validation of the user's permission relative to the resource requested
          */
-		$name 		= $request->route()->getName();
+		$name = $request->route()->getName();
 
 //dd($user->roles);
+dd($name);
 
-		$current 	= explode('.',$name); 
-		$resource 	= $current[1];
 		/*
 		 + Array of routes without permissions needed
 		 */
-		$free_access = ["check"];
+		$free_access = [];
 
-		if( isset($resource) && !in_array( $resource ,$free_access) ){
+		if( !in_array( $name ,$free_access) ){
+
 
 			$action_name = $request->route()->getAction()["as"];
 
-			/*
-			 * Convertion of the name of routes to Portuguese language
-			 * You need to include in this array, every resources names that needs permission
-			 * The permissions should be configured in the Sentinel's groups using the Portuguese names
-			 * Important: The system check the group's permissions, and not which group the user is assigned
-			 */
-			$config = [
-				"users" 		=> "Usuários",
-				"banners" 		=> "Banners",
-				"partners" 		=> "Parceiros",
-				"points" 		=> "Pontos",
-			];
 
 			$sub_items = [
 				/*
@@ -65,11 +52,10 @@ class AdminAuth {
 				*/
 			];
 
-			$current_user = Sentinel::getUser();
 
 			if( isset($config[ $resource ] ) ){
 
-				if( !$current_user->hasAccess( $config[ $resource ] ) ){
+				if( !$$user->hasAccess( $config[ $resource ] ) ){
 
 
 					foreach ($sub_items[$resource] as $k => $item) {
@@ -78,7 +64,7 @@ class AdminAuth {
 
 							foreach ($item as $permission) {
 
-								if( $current_user->hasAccess( $config[ $permission ] )){
+								if( $$user->hasAccess( $config[ $permission ] )){
 									return $next($request);
 								}
 							}

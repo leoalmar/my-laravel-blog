@@ -1,6 +1,6 @@
 angular.module('factories.general',[])
 
-.factory('HttpInterceptor',function($q,$location) {
+.factory('HttpInterceptor',function($q,$rootScope) {
     return {
         request: function(config) {
             // do something on success
@@ -13,7 +13,7 @@ angular.module('factories.general',[])
         'responseError': function(rejection) {
             // do something on error
             if(rejection.status === 401){
-                $location.path('/login');                    
+                $rootScope.$state.go('login');         
             }
             return $q.reject(rejection);
          }

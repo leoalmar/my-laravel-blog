@@ -16,7 +16,7 @@ angular.module('dashboard',[
 	'services.users',
 	'services.permissions',
 
-	'controller.dashboard',
+	'controller.home',
 	'controller.users'								
 ])
 
@@ -52,6 +52,7 @@ angular.module('dashboard',[
 
 
 	// Now set up the states
+	/*
 	$stateProvider
 
 		.state('users', {
@@ -144,13 +145,6 @@ angular.module('dashboard',[
 		.state('home', {
 			url: "/home",
 			cache: false,
-			templateUrl: "view/admin.partials.home.index",
-			controller: "DashboardCtrl",
-			resolve: {
-				logged: function($rootScope){
-					return $rootScope.isLogged();
-				}
-			},
 			breadcrumbs : [
 				{ label : 'Home' }
 			]
@@ -164,6 +158,42 @@ angular.module('dashboard',[
 
 	$urlRouterProvider.otherwise(function(){
 		return 'home';
+	});
+	*/
+
+	var routes = [
+		{
+	        name: 'home',
+	        url: '/',
+			cache: false,
+			controller: "HomeCtrl",
+			templateUrl: "view/admin.partials.home.index",
+			resolve: {
+				user : function($rootScope, UsersService) {
+					return UsersService.check().then(function(data){
+						return data.user;
+					});
+				}
+			},
+	    },
+	    {
+	    	name : 'login',
+			url: "/login",
+			cache: false,
+			templateUrl: "view/admin.partials.login.index",
+			controller: "LoginCtrl",
+			breadcrumbs : [
+				{ label : 'Login' }
+			]
+		}
+	];
+
+	for(i in routes){
+    	$stateProvider.state(routes[i]);
+	}
+
+	$urlRouterProvider.otherwise(function(){
+		return '/';
 	});
 
 	$httpProvider.interceptors.push('HttpInterceptor');
@@ -182,39 +212,44 @@ angular.module('dashboard',[
     $rootScope.breadcrumbs = false;
     $rootScope.manualActiveMenu = false;
 
-    $rootScope.sideMenu = {
-    	"home" : {
-    		icon : "home",
-    		label : "Home",
-    		sref : "home",
-    		activeMenu : ['home'],
-    		permissions : false
-    	},
-    	"users" : {
-    		icon : "users",
-    		label : "Usuários",
-    		sref : "users",
-    		activeMenu : ['users','add_user','user'],
-    		permissions : ["user.view"]
-    	}
-    };
-
     $rootScope.user = false;
     $rootScope.saveHover = false;
 
-    $rootScope.isLogged = function(){
-
-    	var logged = UsersService.check()
-    		.then(function(data){
-    			$rootScope.user = data.data;
-	    		return true;
-		    },function(){
-	    		return false;
-		   	}
-	    );
+    /*
+     * Header menu items configuration
+     */
+    $rootScope.sideMenu = {
+    	"home" : {
+    		label : "Home",
+    		icon : "home",
+    		sref : "home",
+    		activeState : ['home']
+    	},
+    	"users" : {
+    		label : "Users",
+    		icon : "users",
+    		sref : "users",
+    		activeState : ['users'],
+    		permitions : ["user.view"]
+    	},
     };
 
+    /*
+     * Function used for add active class to activate menu based on first position of route name
+     */
+    $rootScope.activeMenu = function(item){
 
+    	var names = $state.current.name.split('.');
+
+    	for ( i in item.activeState ){    		
+    		if ( item.activeState[i] == names[0] ){
+    			return true;
+    		} 
+    	}
+    	return false;
+    };
+
+    
 
     $rootScope.hasAccess = function(permissions){
 

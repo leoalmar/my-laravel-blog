@@ -30,7 +30,7 @@
 
     		<div ng-if=" $state.current.name != 'login' " class="collapse navbar-collapse" id="dashboard-menu">
     			<ul class="nav navbar-nav">
-    				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item.permissions) )" ng-class="{ active: ( activeMenu(item.activeMenu) || manualActiveMenu == item ) }" >
+    				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item) )" ng-class="{ active: ( activeMenu(item) || manualActiveMenu == item ) }" >
     					<a href="#" ui-sref="{{ item.sref }}" ui-reload="true" tooltip-placement="bottom" tooltip="{{ item.label }}">
     						<span class="hidden-xs"><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i></span>
     						<span class="visible-xs"><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}</span>
@@ -73,19 +73,15 @@
 			</div>
 		</div>
 	</div>
-	
-<?php
-/*
+
 	<pre>
-      <!-- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams -->
-      $state = {{ $state.current }}
-      $stateParams = {{ $stateParams }}
-      $state full url = {{ $state.$current.url.source }}
-      <!-- $state.$current is not a public api, we are using it to
-           display the full url for learning purposes-->
-    </pre>
-*/
-?>
+		user = {{ user.name }}
+		<!-- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams -->
+		$state = {{ $state.current }}
+		$stateParams = {{ $stateParams }}
+		$state full url = {{ $state.$current.url.source }}
+		<!-- $state.$current is not a public api, we are using it to display the full url for learning purposes-->
+	</pre>
 
 	
 	[[ Html::script('//code.jquery.com/jquery-2.1.4.min.js') ]]
