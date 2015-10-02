@@ -25,11 +25,14 @@ class UserTableSeeder extends Seeder {
 		]);
 		
 		$role->permissions = [
-		    'admin.home' => true,
-		    'admin.user.view' => true,
-		    'admin.user.update' => true,
-		    'admin.user.delete' => true,
-		    'admin.user.create' => true,
+		    "admin.home" => true,
+			"admin.users.create" => true,
+			"admin.users.destroy" => true,
+			"admin.users.edit" => true,
+			"admin.users.index" => true,
+			"admin.users.show" => true,
+			"admin.users.store" => true,
+			"admin.users.update" => true,
 		];
 
 		$role->save();
@@ -38,3 +41,13 @@ class UserTableSeeder extends Seeder {
 
     }
 }
+
+
+
+
+
+
+
+
+
+

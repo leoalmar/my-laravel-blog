@@ -18,12 +18,12 @@ class AdminAuth {
 	public function handle($request, Closure $next)
 	{
 
-        /*
-         + Get the route name to make a validation of the user's permission relative to the resource requested
+        /**
+         * Get the route name to make a validation of the user's permission relative to the resource requested
          */
 		$route_name = $request->route()->getName();
 		
-		/*
+		/**
 		 * Check if the user is logged, then return HTTP 401 status
 		 */
 		if(!$user = Sentinel::check()){
@@ -41,8 +41,8 @@ class AdminAuth {
         	return response(['success' => true, 'user' => $user], 200);
         }
 
-		/*
-		 + Array of routes without permissions needed
+		/**
+		 * Array of routes without permissions needed
 		 */
 		$free_access = [];
 

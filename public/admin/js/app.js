@@ -59,35 +59,6 @@ angular.module('dashboard',[
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider){
 	
-
-	function routeGenerate(URL,ctrl,view,breadcrumbs,add){
-		
-		var is_add_page = ( URL.indexOf("add_") != -1 );
-
-		var obj = {
-			cache: false,
-			url: URL,
-			controller: ctrl+"Ctrl",
-			templateUrl: "view/admin.partials."+view,
-			resolve : {
-				logged: function($rootScope){
-					return $rootScope.isLogged();
-				},
-				Add : function(){
-					return is_add_page;
-				}
-			},			
-			breadcrumbs : breadcrumbs || false
-		};
-
-		if(add){
-			obj.add = add;
-		}
-
-		return obj;
-	}
-
-
 	// Now set up the states
 	/*
 	$stateProvider
@@ -95,7 +66,7 @@ angular.module('dashboard',[
 		.state('users', {
 			url: "/users",
 			cache: false,
-			templateUrl: "view/admin.partials.users.index",
+			templateUrl: "view/admin.users.index",
 			controller: "UsersCtrl",
 			resolve: {
 				logged: function($rootScope){
@@ -113,7 +84,7 @@ angular.module('dashboard',[
 		.state('user', {
 			url: "/users/user/{id:int}",
 			cache: false,
-			templateUrl: "view/admin.partials.users.user",
+			templateUrl: "view/admin.users.user",
 			controller: "UserCtrl",
 			resolve : {
 				logged: function($rootScope){
@@ -136,7 +107,7 @@ angular.module('dashboard',[
 		.state('add_user', {
 			url: "/users/add_user",
 			cache: false,
-			templateUrl: "view/admin.partials.users.user",
+			templateUrl: "view/admin.users.user",
 			controller: "UserCtrl",
 			resolve : {
 				logged: function($rootScope){
@@ -159,7 +130,7 @@ angular.module('dashboard',[
 		.state('permissions', {
 			url: "/users/permissions/{id:int}",
 			cache: false,
-			templateUrl: "view/admin.partials.users.permissions",
+			templateUrl: "view/admin.users.permissions",
 			controller: "PermissionsCtrl",
 			resolve : {
 				Add : function(){
@@ -172,7 +143,7 @@ angular.module('dashboard',[
 		.state('login', {
 			url: "/login",
 			cache: false,
-			templateUrl: "view/admin.partials.login.index",
+			templateUrl: "view/admin.login.index",
 			controller: "LoginCtrl",
 			breadcrumbs : [
 				{ label : 'Login' }
@@ -204,7 +175,7 @@ angular.module('dashboard',[
 	        url: '/',
 			cache: false,
 			controller: "HomeCtrl",
-			templateUrl: "view/admin.partials.home.index",
+			templateUrl: "view/admin.home.index",
 			resolve: {
 				user : function($rootScope, UsersService) {
 					return UsersService.check().then(function(data){
@@ -220,10 +191,22 @@ angular.module('dashboard',[
 	    	name : 'login',
 			url: "/login",
 			cache: false,
-			templateUrl: "view/admin.partials.login.index",
+			templateUrl: "view/admin.login.index",
 			controller: "LoginCtrl",
+			breadcrumbs : false
+		},
+		{
+			name : "users",
+			url: "/users",
+			cache: false,
+			templateUrl: "view/admin.users.index",
+			controller: "UsersCtrl",
+			add : {
+				state : "add_user",
+				text : "Cadastrar novo usuário"
+			},
 			breadcrumbs : [
-				{ label : 'Login' }
+				{ label : 'Usuários' }
 			]
 		}
 	];
@@ -253,7 +236,6 @@ angular.module('dashboard',[
     $rootScope.manualActiveMenu = false;
 
     $rootScope.user = false;
-    $rootScope.saveHover = false;
 
     /*
      * Header menu items configuration
@@ -270,7 +252,7 @@ angular.module('dashboard',[
     		icon : "users",
     		sref : "users",
     		activeState : ['users'],
-    		permissions : ["admin.user.view"]
+    		permissions : ["admin.users."]
     	},
     };
 
@@ -289,8 +271,6 @@ angular.module('dashboard',[
     	return false;
     };
 
-    
-
     $rootScope.hasAccess = function(item){
 
     	if(!item.permissions) return true;
@@ -305,7 +285,18 @@ angular.module('dashboard',[
 
 				for (k in item.permissions) {
 					
-					if( permission == item.permissions[k] ) return true;
+					var p = item.permissions[k];
+					
+					var last_char = p.charAt(p.length - 1);
+
+					if(last_char == "."){
+				
+						if( permission.search(p) === 0) return true;
+
+					}else if(permission == p){					
+
+						return true;
+					}
 				}
 			}	    	
     	}

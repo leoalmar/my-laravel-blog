@@ -11,23 +11,21 @@ $router->group(['as' => 'site.'], function() {
 
 
 /* ================ ADMIN'S ROUTES ============================================================= */
-$router->group(['as' => 'admin.'], function() use ($router) {
 
-	Route::get('dashboard', ['as' => 'home', 'uses' => 'Admin\HomeController@index']);	
+Route::get('dashboard', ['as' => 'admin.home', 'uses' => 'Admin\HomeController@index']);	
 	
-	$router->group(['prefix' => 'admin'], function() use ($router) {
+$router->group(['prefix' => 'admin'], function() use ($router) {
+	
+	Route::post('authenticate', ['as' => 'admin.authenticate', 'uses' => 'Admin\UsersController@login' ]);
+	
+	$router->group(['middleware' => ['AdminAuth']], function() { 
 
-		Route::post('authenticate', ['as' => 'authenticate', 'uses' => 'Admin\UsersController@login' ]);
-		
-		$router->group(['middleware' => ['AdminAuth']], function() { 
+		Route::get('check', ['as' => 'admin.check', 'uses' => 'Admin\UsersController@check']);
+		Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Admin\UsersController@logout' ]);
 
-			Route::get('check', ['as' => 'check', 'uses' => 'Admin\UsersController@check']);
-			Route::get('logout', ['as' => 'logout', 'uses' => 'Admin\UsersController@logout' ]);
+		Route::resource('users', 'Admin\UsersController');
+		Route::resource('permissions', 'Admin\PermissionsController');
 
-			Route::resource('users', 'Admin\UsersController');
-			Route::resource('permissions', 'Admin\PermissionsController');
-
-		});
 	});
 });
 
