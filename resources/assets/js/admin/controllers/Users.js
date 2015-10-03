@@ -3,13 +3,6 @@ angular.module('controller.users',[])
 .controller("LoginCtrl", function($scope,$state,$stateParams,UsersService){
 
 	$scope.user 	= false;
-
-	/*
-	$scope.user 	= {
-		email : "admin@mamamiga.com.br",
-		password: "123456"
-	};
-	*/
 	$scope.loading 	= false;
 
 	$scope.authenticate = function(form){

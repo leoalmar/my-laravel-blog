@@ -102,24 +102,6 @@ angular.module('dashboard',[
 		})
 
 	
-		.state('login', {
-			url: "/login",
-			cache: false,
-			templateUrl: "view/admin.login.index",
-			controller: "LoginCtrl",
-			breadcrumbs : [
-				{ label : 'Login' }
-			]
-		})
-
-		.state('home', {
-			url: "/home",
-			cache: false,
-			breadcrumbs : [
-				{ label : 'Home' }
-			]
-		})
-
 		.state("banners",routeGenerate("/banners","Banners","banners.index",[{label:'Banners'}],{state:"add_banner",text:"Cadastrar novo Banner"}))
 		.state("banner",routeGenerate("/banners/banner/{id:int}","Banner","banners.banner",[{label:'Banners'},{label:'Banner'}]))
 		.state("add_banner",routeGenerate("/banners/add_banner","Banner","banners.banner",[{state:"banners",label:'Banners'},{label:'Cadastro de Banner'}]))
