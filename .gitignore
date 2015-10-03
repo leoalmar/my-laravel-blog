@@ -8,6 +8,7 @@ Homestead.yaml
 Homestead.json
 .env
 *.sublime-project
+*.sublime-workspace
 # ================================
 
 .svn
