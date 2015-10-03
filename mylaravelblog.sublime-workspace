@@ -1,0 +1,694 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Image",
+				"ImageController"
+			],
+			[
+				"TE",
+				"TextoBanner"
+			],
+			[
+				"drop",
+				"Dropdown"
+			],
+			[
+				"Pa",
+				"Pagina"
+			],
+			[
+				"border",
+				"border-right"
+			],
+			[
+				"min-",
+				"min-height"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"a",
+				"anim-	animation: ${1:name} ${2:duration} ${3:timing-function} ${4:delay} ${5:iteration-count} ${6:direction} ${7:fill-mode};"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"import",
+				"important"
+			],
+			[
+				"cliente",
+				"clientepf"
+			],
+			[
+				"client",
+				"clientepj"
+			],
+			[
+				"Cli",
+				"ClienteFinalizado"
+			],
+			[
+				"table_",
+				"table_operador"
+			],
+			[
+				"user",
+				"users_telephone"
+			],
+			[
+				"detec",
+				"detectEnvironment"
+			],
+			[
+				"No",
+				"Noticia"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"ov",
+				"overflow"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"tit",
+				"Titulo"
+			],
+			[
+				"remove",
+				"removeClass	.removeClass()"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"to",
+				"top"
+			],
+			[
+				"o",
+				"overflow"
+			],
+			[
+				"fade",
+				"fadeOut	.fadeOut()"
+			],
+			[
+				"dis",
+				"display"
+			],
+			[
+				"full",
+				"fullformvalidation/"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"En",
+				"Endereco2"
+			],
+			[
+				"pro",
+				"prop  (function)"
+			],
+			[
+				"T",
+				"Telefone2"
+			],
+			[
+				"Tele",
+				"Telefone"
+			],
+			[
+				"Cam",
+				"CampanhaPauta"
+			],
+			[
+				"Pau",
+				"Pauta"
+			],
+			[
+				"pa",
+				"pautas"
+			],
+			[
+				"campa",
+				"campanhas_id"
+			],
+			[
+				"po",
+				"post  (function)"
+			],
+			[
+				"RE",
+				"Result"
+			],
+			[
+				"Ca",
+				"CampanhasDepartamento"
+			],
+			[
+				"Dep",
+				"Departamentos"
+			],
+			[
+				"departamento",
+				"departamento_id"
+			],
+			[
+				"end",
+				"endforeach"
+			],
+			[
+				"cam",
+				"campanha"
+			],
+			[
+				"wh",
+				"where"
+			],
+			[
+				"CampanhaDepa",
+				"CampanhasDepartamento"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"print",
+				"print_r"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Add Repository"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: Q",
+				"Snippet: QueryLog"
+			],
+			[
+				"Snippet: q",
+				"Snippet: Query Debug"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Upgrade Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/Thiago/Server/my-laravel-blog"
+	],
+	"file_history":
+	[
+		"/Users/Thiago/Server/burallielemos/public/js/pagina.js",
+		"/Users/Thiago/Server/burallielemos/public/js/equipe.js",
+		"/Users/Thiago/Server/burallielemos/public/js/noticia.js",
+		"/Users/Thiago/Server/burallielemos/public/js/area.js",
+		"/Users/Thiago/Server/burallielemos/app/views/noticia/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/routes.php",
+		"/Users/Thiago/Server/burallielemos/app/models/Permission.php",
+		"/Users/Thiago/Server/burallielemos/app/views/pagina/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/layout/footer.blade.php",
+		"/Users/Thiago/Server/burallielemos/public/js/funcoes.js",
+		"/Users/Thiago/Server/burallielemos/app/views/layout/menu_site.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/controllers/ImageController.php",
+		"/Users/Thiago/Server/burallielemos/app/controllers/PaginaController.php",
+		"/Users/Thiago/Server/burallielemos/app/views/pagina/editar.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/controllers/SiteController.php",
+		"/Users/Thiago/Downloads/uploading_dropped_and_pasted_images.html",
+		"/Users/Thiago/Server/burallielemos/app/storage/kcfinder/core/bootstrap.php",
+		"/Users/Thiago/Server/burallielemos/app/storage/kcfinder/core/autoload.php",
+		"/Users/Thiago/Server/burallielemos/public/js/kcfinder/browse.php",
+		"/Users/Thiago/Server/burallielemos/app/views/layout/footer_site.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/assets/Gruntfile.js",
+		"/Users/Thiago/Server/burallielemos/app/assets/plugins/ckeditor/plugins/image/dialogs/image.js",
+		"/Users/Thiago/Server/burallielemos/app/views/site/atuacao.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/atuacaointerna.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/contato.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/equipe.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/layout/header_site.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/noticias.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/pagina.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/banner.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/profissional.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/quemsomos.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/noticia.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/config/database.php",
+		"/Users/Thiago/Server/burallielemos/app/views/pagina/list.blade.php",
+		"/Users/Thiago/Server/burallielemos/public/js/cliente.js",
+		"/Users/Thiago/Server/burallielemos/public/js/banner.js",
+		"/Users/Thiago/Server/burallielemos/public/js/modulo.js",
+		"/Users/Thiago/Server/burallielemos/public/js/usuario.js",
+		"/Users/Thiago/Server/burallielemos/public/js/grupo.js",
+		"/Users/Thiago/Server/burallielemos/public/js/variavel.js",
+		"/Users/Thiago/Server/burallielemos/app/views/equipe/editar.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/equipe/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/controllers/EquipeController.php",
+		"/Users/Thiago/Server/burallielemos/app/views/banner/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/layout/master_site.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/database/migrations/2015_07_27_190507_create_equipes_table.php",
+		"/Users/Thiago/Server/burallielemos/public/css/site/app.css",
+		"/Users/Thiago/Server/burallielemos/app/views/manutencao/manutencao.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/controllers/MailController.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/formcontato.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/mail/contato.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/layout/mail.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/config/mail.php",
+		"/Users/Thiago/Server/burallielemos/app/views/banner/full.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/user/list.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/banner/editar.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/equipe/list.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/area/editar.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/layout/menu.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/controllers/AreaController.php",
+		"/Users/Thiago/Server/burallielemos/app/models/Equipe.php",
+		"/Users/Thiago/Server/burallielemos/public/css/equipe.css",
+		"/Users/Thiago/Server/burallielemos/app/views/area/list.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/models/Area.php",
+		"/Users/Thiago/Server/burallielemos/app/views/area/index.blade.php",
+		"/Users/Thiago/Downloads/Freela/index.html",
+		"/Users/Thiago/Server/burallielemos/public/css/area.css",
+		"/Users/Thiago/Server/burallielemos/app/database/migrations/2015_07_23_005504_create_area_table.php",
+		"/Users/Thiago/Server/burallielemos/app/views/site/areaatuacao.blade.php",
+		"/Users/Thiago/Server/burallielemos/public/index.php",
+		"/Users/Thiago/Server/burallielemos/app/views/layout/header.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/controllers/ManutencaoController.php",
+		"/Users/Thiago/Server/burallielemos/app/views/group/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/group/editar.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/user/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/views/user/editar.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/controllers/UsuarioController.php",
+		"/Users/Thiago/Server/burallielemos/app/views/login/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/assets/less/vars.less",
+		"/Users/Thiago/Server/burallielemos/routes.php",
+		"/Users/Thiago/Server/burallielemos/public/bootstrap/css/bootstrap-theme.css",
+		"/Users/Thiago/Server/burallielemos/views/layout/master_site.blade.php",
+		"/Users/Thiago/Server/burallielemos/views/layout/header_site.blade.php",
+		"/Users/Thiago/Server/burallielemos/views/site/banner.blade.php",
+		"/Users/Thiago/Server/burallielemos/views/site/index.blade.php",
+		"/Users/Thiago/Server/burallielemos/views/layout/menu_site.blade.php",
+		"/Users/Thiago/Server/burallielemos/views/layout/footer_site.blade.php",
+		"/Users/Thiago/Server/burallielemos/app/config/desenvolvimento/database.php",
+		"/Users/Thiago/Server/burallielemos/app/config/homologacao/database.php",
+		"/Users/Thiago/Server/burallielemos/app/config/producao/database.php",
+		"/Users/Thiago/Server/burallielemos/app/config/desenvolvimento/app.php",
+		"/Users/Thiago/Server/burallielemos/app/config/producao/app.php",
+		"/Users/Thiago/Server/burallielemos/app/config/app.php",
+		"/Users/Thiago/Server/burallielemos/index.php",
+		"/Users/Thiago/Server/suportenow2/app/views/banner/modal.blade.php",
+		"/Users/Thiago/Server/suportenow2/app/views/banner/destaque.blade.php",
+		"/Users/Thiago/Server/suportenow2/public/css/banner.css",
+		"/Users/Thiago/Server/suportenow2/app/views/cliente/index.blade.php",
+		"/Users/Thiago/Server/suportenow2/app/views/cliente/list.blade.php",
+		"/Users/Thiago/Server/suportenow2/app/views/group/index.blade.php",
+		"/Users/Thiago/Server/suportenow2/app/views/layout/menu.blade.php",
+		"/Users/Thiago/Server/suportenow2/app/views/user/index.blade.php",
+		"/Users/Thiago/Server/suportenow2/app/models/Banner.php",
+		"/Users/Thiago/Server/suportenow2/app/routes.php",
+		"/Users/Thiago/Server/suportenow2/app/models/Endereco.php",
+		"/Users/Thiago/Server/suportenow2/app/controllers/ClienteController.php",
+		"/Users/Thiago/Server/suportenow2/public/css/cliente.css",
+		"/Users/Thiago/Server/suportenow2/app/models/Permission.php",
+		"/Users/Thiago/Server/suportenow2/app/assets/plugins/inputmask/jquery.mask.js",
+		"/Users/Thiago/Server/suportenow2/app/database/migrations/2015_02_13_003800_create_endereco_table.php",
+		"/Users/Thiago/Server/suportenow2/app/database/migrations/2014_12_26_154746_create_users_telephone_table.php",
+		"/Users/Thiago/Server/suportenow2/app/database/migrations/2014_11_30_114837_create_cliente_table.php",
+		"/Users/Thiago/Server/suportenow2/app/database/migrations/2014_11_30_115326_create_clientepf_table.php",
+		"/Users/Thiago/Server/suportenow2/app/controllers/EnderecoController.php",
+		"/Users/Thiago/Server/suportenow2/app/database/seeds/DatabaseSeeder.php",
+		"/Users/Thiago/Server/suportenow2/app/database/seeds/UsersTelephoneOperadoraTableSeeder.php",
+		"/Users/Thiago/Server/suportenow2/public/js/cliente.js",
+		"/Users/Thiago/Server/suportenow2/app/models/Telefone.php",
+		"/Users/Thiago/Server/suportenow2/app/views/cliente/pj.blade.php",
+		"/Users/Thiago/Server/suportenow2/app/views/cliente/pf.blade.php",
+		"/Users/Thiago/Server/suportenow2/public/js/Adminglobal.js",
+		"/Users/Thiago/Server/suportenow2/app/database/seeds/UsersTelephoneTipoTableSeeder.php",
+		"/Users/Thiago/Server/suportenow2/public/js/app.js",
+		"/Users/Thiago/Server/suportenow2/app/assets/Gruntfile.js",
+		"/Users/Thiago/Library/Application Support/Sublime Text 3/Packages/Emmet/Default (OSX).sublime-keymap",
+		"/Users/Thiago/Server/suportenow2/public/js/grupo.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/Thiago/Server/suportenow2/app/assets",
+			"<project>",
+			"E:\\Server\\advocacia\\app\\views",
+			"<project>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"wysihtml5",
+			"FullFormValidation",
+			"ckeditor",
+			"EditorTexto",
+			"Editor",
+			"Dropdown1",
+			"init",
+			"callback",
+			"FullFormValidation",
+			"edit",
+			"Texto",
+			"name",
+			"upload",
+			"Upload",
+			"upload",
+			"\"lib",
+			"\"core/",
+			"browse.php",
+			"CKEDITOR.replace( 'Texto');",
+			"Editor1",
+			"wysihtml5",
+			"$(\".textarea\").wysihtml5({\n		customTemplates: myCustomTemplates,\n		locale: \"pt-BR\"\n	});",
+			"wysihtml5",
+			"var myCustomTemplates = {\n	// 	html : function(locale) {\n	// 		return \"<li>\" +\n	// 		\"<div class='btn-group'>\" +\n	// 		\"<a class='btn btn-default' data-wysihtml5-action='change_view' title='\" + locale.html.edit + \"'>HTML</a>\" +\n	// 		\"</div>\" +\n	// 		\"</li>\";\n	// 	}\n	// };",
+			"wysihtml5",
+			"ckedit",
+			"wysihtml5",
+			"meses",
+			"\";\n",
+			"quemsomos",
+			"Institucional",
+			"ImagemBanner1",
+			"Equipe",
+			"AIU",
+			"plugin_image",
+			"AIU",
+			"myCustomTemplates",
+			"aiu",
+			"aui",
+			"init()",
+			"AIU",
+			"tipo",
+			"   ",
+			"  ",
+			"    ",
+			"   ",
+			"  ",
+			"    ",
+			"clear",
+			"tipopagina",
+			"radiodropdown",
+			"Dropdown",
+			"');\n",
+			"custo",
+			"FormPagina",
+			"checked",
+			"tipo",
+			"2",
+			"1",
+			"FormPagina",
+			"titulo",
+			"Asc",
+			"Tipo",
+			"Url",
+			"true",
+			"MenuPai",
+			"Status",
+			"6",
+			"Dropdown",
+			"12",
+			"Url",
+			"Tipo",
+			"FormBanner",
+			"6",
+			"NomeMenu",
+			"Titulo",
+			"$Menu->filhos",
+			" <li><a href=\"/{{$Menu['url']}}\">{{$Menu->dados['nome_menu']}}</a></li>",
+			"Menu",
+			"$Menu",
+			"Paginas",
+			"asc",
+			";        ",
+			"email",
+			"FormEquipe",
+			"Curriculo",
+			"Texto",
+			"Curr",
+			"Photo1",
+			"Telefone",
+			"Email",
+			"E-mail",
+			"Nome",
+			"Noticia",
+			"/p",
+			"nome",
+			"img",
+			"logo",
+			"mensagem",
+			"telefone",
+			"email",
+			"nome",
+			"id",
+			"button",
+			"required",
+			"input",
+			"placeholders",
+			"<input type=\"text\"",
+			",\n",
+			">\n",
+			"email",
+			"exampleInputEmail2",
+			"nome",
+			"Nome",
+			"exampleInputName2",
+			"area",
+			"ImagemBanner1",
+			"IntegranteBanner1",
+			"3",
+			"Area",
+			"area",
+			"Area",
+			"area",
+			"Area",
+			"ImagemEquipe",
+			"Area",
+			"bannerid",
+			"FormEquipeEdit"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"<div class=\"form-group\">\n                    <label for=\"Valor\">Valor</label>\n                    <input type=\"text\" class=\"form-control\" id=\"Valor\" name=\"Valor\" placeholder=\"Valor da varável\" value=\"{{$Variavel['valor']}}\" data-conf=\"[{req:true, type:'text', msg:'Preencha o <b>valor</b>'}]\" form=\"FormVariavelEdit\">\n                </div>"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 120.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "mylaravelblog.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"endere",
+				"app/models/Endereco.php"
+			],
+			[
+				"cliente",
+				"app/controllers/ClienteController.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Documents/falafluxo.sublime-project"
+			],
+			[
+				"fala",
+				"/E/Server/sublime/falafluxo.sublime-project"
+			],
+			[
+				"neo",
+				"/E/Server/sublime/neocorretor.sublime-project"
+			],
+			[
+				"ne",
+				"/E/Server/sublime/neocorretor.sublime-project"
+			],
+			[
+				"sg",
+				"/E/Server/sublime/sgw.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 310.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
