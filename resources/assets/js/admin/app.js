@@ -21,24 +21,15 @@ angular.module('dashboard',[
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider){
 	
+	function generalResolver(){
+		return {
+			check : function($rootScope) {
+				return $rootScope.check();
+			}
+		};
+	}
+
 	var routes = [
-		{
-	        name: 'home',
-	        url: '/',
-			cache: false,
-			controller: "HomeCtrl",
-			templateUrl: "view/admin.home.index",
-			resolve: {
-				user : function($rootScope, UsersService) {
-					return UsersService.check().then(function(data){
-						$rootScope.user = data.data.user;
-					});
-				}
-			},
-			breadcrumbs : [
-				{ label : 'Home' }
-			]
-	    },
 	    {
 	    	name : 'login',
 			url: "/login",
@@ -48,18 +39,30 @@ angular.module('dashboard',[
 			breadcrumbs : false
 		},
 		{
+	        name: 'home',
+	        url: '/',
+			cache: false,
+			controller: "HomeCtrl",
+			templateUrl: "view/admin.home.index",
+			resolve: generalResolver(),
+			breadcrumbs : [
+				{ label : 'Home' }
+			]
+	    },
+		{
 			name : "users",
 			url: "/users",
 			cache: false,
-			templateUrl: "view/admin.users.index",
 			controller: "UsersCtrl",
+			templateUrl: "view/admin.users.index",
+			resolve: generalResolver(),
+			breadcrumbs : [
+				{ label : 'Usuários' }
+			],
 			add : {
 				state : "add_user",
 				text : "Cadastrar novo usuário"
-			},
-			breadcrumbs : [
-				{ label : 'Usuários' }
-			]
+			}
 		}
 	];
 
@@ -123,6 +126,13 @@ angular.module('dashboard',[
     	return false;
     };
 
+    $rootScope.check = function(){
+    	UsersService.check().then(function(data){
+			$rootScope.user = data.data.user;
+		});
+		return true;
+    };
+
     $rootScope.hasAccess = function(item){
 
     	if(!item.permissions) return true;
@@ -176,7 +186,7 @@ angular.module('dashboard',[
     	var size = (width && height) ? width+"x"+height : "";
     	var effects = (effects) ? "-" + effects.join('-') : "";
     	var path = "/img/"+file[0]+"-image("+size+effects+")."+file[1];
-    	
+
     	return path;
     };
 

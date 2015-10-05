@@ -59,134 +59,15 @@ angular.module('dashboard',[
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider){
 	
-	// Now set up the states
-	/*
-	$stateProvider
-
-		.state('users', {
-			url: "/users",
-			cache: false,
-			templateUrl: "view/admin.users.index",
-			controller: "UsersCtrl",
-			resolve: {
-				logged: function($rootScope){
-					return $rootScope.isLogged();
-				}
-			},
-			add : {
-				state : "add_user",
-				text : "Cadastrar novo usuário"
-			},
-			breadcrumbs : [
-				{ label : 'Usuários' }
-			]
-		})
-		.state('user', {
-			url: "/users/user/{id:int}",
-			cache: false,
-			templateUrl: "view/admin.users.user",
-			controller: "UserCtrl",
-			resolve : {
-				logged: function($rootScope){
-					return $rootScope.isLogged();
-				},
-				Add : function(){
-					return false;
-				}
-			},
-			breadcrumbs : [
-				{ 
-					state : "users",
-					label : 'Usuários'
-				},
-				{ 
-					label : 'Usuário'
-				}
-			]
-		})
-		.state('add_user', {
-			url: "/users/add_user",
-			cache: false,
-			templateUrl: "view/admin.users.user",
-			controller: "UserCtrl",
-			resolve : {
-				logged: function($rootScope){
-					return $rootScope.isLogged();
-				},
-				Add : function(){
-					return true;
-				}
-			},
-			breadcrumbs : [
-				{ 
-					state : "users",
-					label : 'Usuários'
-				},
-				{ 
-					label : 'Cadastro de usuário'
-				}
-			]
-		})
-		.state('permissions', {
-			url: "/users/permissions/{id:int}",
-			cache: false,
-			templateUrl: "view/admin.users.permissions",
-			controller: "PermissionsCtrl",
-			resolve : {
-				Add : function(){
-					return true;
-				}
+	function generalResolver(){
+		return {
+			check : function($rootScope) {
+				return $rootScope.check();
 			}
-		})
-
-	
-		.state('login', {
-			url: "/login",
-			cache: false,
-			templateUrl: "view/admin.login.index",
-			controller: "LoginCtrl",
-			breadcrumbs : [
-				{ label : 'Login' }
-			]
-		})
-
-		.state('home', {
-			url: "/home",
-			cache: false,
-			breadcrumbs : [
-				{ label : 'Home' }
-			]
-		})
-
-		.state("banners",routeGenerate("/banners","Banners","banners.index",[{label:'Banners'}],{state:"add_banner",text:"Cadastrar novo Banner"}))
-		.state("banner",routeGenerate("/banners/banner/{id:int}","Banner","banners.banner",[{label:'Banners'},{label:'Banner'}]))
-		.state("add_banner",routeGenerate("/banners/add_banner","Banner","banners.banner",[{state:"banners",label:'Banners'},{label:'Cadastro de Banner'}]))
-
-	;
-
-	$urlRouterProvider.otherwise(function(){
-		return 'home';
-	});
-	*/
+		};
+	}
 
 	var routes = [
-		{
-	        name: 'home',
-	        url: '/',
-			cache: false,
-			controller: "HomeCtrl",
-			templateUrl: "view/admin.home.index",
-			resolve: {
-				user : function($rootScope, UsersService) {
-					return UsersService.check().then(function(data){
-						$rootScope.user = data.data.user;
-					});
-				}
-			},
-			breadcrumbs : [
-				{ label : 'Home' }
-			]
-	    },
 	    {
 	    	name : 'login',
 			url: "/login",
@@ -196,18 +77,30 @@ angular.module('dashboard',[
 			breadcrumbs : false
 		},
 		{
+	        name: 'home',
+	        url: '/',
+			cache: false,
+			controller: "HomeCtrl",
+			templateUrl: "view/admin.home.index",
+			resolve: generalResolver(),
+			breadcrumbs : [
+				{ label : 'Home' }
+			]
+	    },
+		{
 			name : "users",
 			url: "/users",
 			cache: false,
-			templateUrl: "view/admin.users.index",
 			controller: "UsersCtrl",
+			templateUrl: "view/admin.users.index",
+			resolve: generalResolver(),
+			breadcrumbs : [
+				{ label : 'Usuários' }
+			],
 			add : {
 				state : "add_user",
 				text : "Cadastrar novo usuário"
-			},
-			breadcrumbs : [
-				{ label : 'Usuários' }
-			]
+			}
 		}
 	];
 
@@ -271,6 +164,13 @@ angular.module('dashboard',[
     	return false;
     };
 
+    $rootScope.check = function(){
+    	UsersService.check().then(function(data){
+			$rootScope.user = data.data.user;
+		});
+		return true;
+    };
+
     $rootScope.hasAccess = function(item){
 
     	if(!item.permissions) return true;
@@ -324,7 +224,7 @@ angular.module('dashboard',[
     	var size = (width && height) ? width+"x"+height : "";
     	var effects = (effects) ? "-" + effects.join('-') : "";
     	var path = "/img/"+file[0]+"-image("+size+effects+")."+file[1];
-    	
+
     	return path;
     };
 
@@ -482,13 +382,6 @@ angular.module('controller.users',[])
 .controller("LoginCtrl", function($scope,$state,$stateParams,UsersService){
 
 	$scope.user 	= false;
-
-	/*
-	$scope.user 	= {
-		email : "admin@mamamiga.com.br",
-		password: "123456"
-	};
-	*/
 	$scope.loading 	= false;
 
 	$scope.authenticate = function(form){
