@@ -1,7 +1,8 @@
 angular.module('dashboard',[
 	'ngSanitize',
-	'ngPassword',
 	'ngAnimate',
+	'jcs-autoValidate',
+	'ngPassword',
 	
 	'ui.router',
 	'ui.mask',
@@ -78,7 +79,44 @@ angular.module('dashboard',[
 
 })
 
-.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,UsersService) {
+.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,defaultErrorMessageResolver,UsersService) {
+
+	/*
+	 * Angular Auto Validate errors messages config
+	 */
+	defaultErrorMessageResolver.setI18nFileRootPath('admin/js/angular-auto-validate/lang/');
+    defaultErrorMessageResolver.setCulture('pt-br');
+
+    $rootScope.responseErrorValidate = function(form,response){
+
+    	var error = response.error;
+
+		error.forEach(function(element, index, array){
+
+			var field = element.field;
+			var message = element.message;
+			var responseName = 'response'+field;
+
+			defaultErrorMessageResolver.getErrorMessages().then(function (errorMessages) {
+	          errorMessages[responseName] = message;
+	        });
+
+			eval("form."+field+".$validators."+responseName+" = function(){return false;};");
+	        eval("form."+field+".$validate();");
+			
+		});
+
+		if(response.focus || response.select){
+			if(response.focus){
+				$("[name="+response.focus+"]").focus();
+			}else{
+				$("[name="+response.select+"]").select();						
+			}
+		}
+    };
+
+
+
 
     // It's very handy to add references to $state and $stateParams to the $rootScope
     // so that you can access them from any scope within your applications.For example,

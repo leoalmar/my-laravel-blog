@@ -15,7 +15,7 @@
 				</div>
 				<div class="form-group col-md-6">
 					<label for="email" class="label-control">Email</label>
-					<input name="email" id="email" ng-model="email" type="email" class="form-control" required="required" >			
+					<input name="email" id="email" ng-model="email" type="email" class="form-control" required="required" >	
 				</div>
 				<div class="form-group col-md-6">
 					<label for="username" class="label-control">Username</label>

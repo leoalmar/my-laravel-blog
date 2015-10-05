@@ -9,5 +9,11 @@
     "date": "Please enter a valid date",
     "pattern": "Please ensure the entered information adheres to this pattern {0}",
     "number": "Please enter a valid number",
-    "url": "Please enter a valid URL in the format of http(s)://www.google.com"
+    "url": "Please enter a valid URL in the format of http(s)://www.google.com",
+
+    "invalidUser" : "Please check the given information!",
+    
+    "tooYoung" : "Você precisa ter pelo menos {0} anos de idade para usar este site",
+    "tooOld" : "Você precisa ter no máximo {0} anos de idade para usar este site",
+    "badUsername" : "O nome de usuário precisa ter entre 3 e 15 caracteres, e pode conter apenas letras, números e _"
 }

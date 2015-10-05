@@ -22,7 +22,7 @@
 			</ul>
     		<ul class="nav navbar-nav navbar-right" ng-ig="user">
     			<li>
-    				<a href="#" ng-click="logout()">{{ user.first_name }} <i class="fa fa-fw fa-sign-out"></i></a>
+    				<a href="#" ng-click="logout()" tooltip-placement="bottom" tooltip="Logout">{{ user.first_name }} <i class="fa fa-fw fa-sign-out"></i></a>
     			</li>
     		</ul>
 		</div>

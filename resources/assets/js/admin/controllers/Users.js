@@ -1,13 +1,12 @@
 angular.module('controller.users',[])
 
-.controller("LoginCtrl", function($scope,$state,$stateParams,UsersService){
+.controller("LoginCtrl", function($rootScope,$scope,$state,$stateParams,UsersService,defaultErrorMessageResolver){
 
 	$scope.user 	= false;
 	$scope.loading 	= false;
 
-	$scope.authenticate = function(form){
+	$scope.submitForm = function(form){
 
-		$scope.message = false;
 		$scope.loading = true;
 
 		UsersService.authenticate($scope.user).then(function(data){
@@ -15,11 +14,9 @@ angular.module('controller.users',[])
 			var response = data.data;
 
 			if(response.success){
-				$state.go("home",{reload: true});
+				$state.go("home",null,{reload: true});
 			}else{
-				var error = response.error;
-				$scope.message = error.message;
-				$("[name="+error.field+"]").select();
+				$rootScope.responseErrorValidate(form,response);				
 			}
 			$scope.loading = false;
 

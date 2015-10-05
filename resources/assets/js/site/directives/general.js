@@ -1,2 +1,1 @@
 angular.module('directives.general',[])
-

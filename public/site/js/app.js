@@ -76,7 +76,6 @@ angular.module('factories.general',[])
 
 angular.module('directives.general',[])
 
-
 angular.module('filters.general',[])
 
 .filter("url",function(){
