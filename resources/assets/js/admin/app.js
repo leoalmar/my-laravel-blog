@@ -89,6 +89,7 @@ angular.module('dashboard',[
 
     $rootScope.responseErrorValidate = function(form,response){
 
+
     	var responsePrefix = 'response';
 
     	var error = response.error;

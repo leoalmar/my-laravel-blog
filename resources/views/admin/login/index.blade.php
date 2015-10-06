@@ -1,6 +1,6 @@
 <div class="row">
 	
-	<div class="col-sm-6 col-sm-offset-3">
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 ">
 
 		<div class="panel panel-default">	
 
@@ -19,18 +19,17 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group col-xs-12">
+							<div class="form-group col-xs-8">
 								<label for="password" class="label-control">Password</label>
 								<input name="password" id="password" ng-model="user.password" type="password" class="form-control" required="required" >
 							</div>
-						</div>
-						<div class="row">
-							<div class="form-group col-xs-12 text-right">								
-								<button ng-disabled="loading" class="btn btn-primary" type="submit">
+							<div class="form-group col-xs-4">								
+								<label for="" class="label-control">&nbsp;</label>
+								<button ng-disabled="loading" class="btn btn-primary btn-block" type="submit">
 									<i class="fa fa-fw" ng-class="{ 'fa-sign-in' : !loading, 'fa-spinner fa-spin' : loading }"></i> <strong>Login</strong>
 								</button>
 							</div>
-						</div>				
+						</div>
 					</div>
 				</form>
 				

@@ -46,6 +46,30 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
+        if ($e instanceof \Cartalyst\Sentinel\Checkpoints\ThrottlingException) {
+
+            $free = $e->getFree()->format('d M, h:i:s a');
+
+            switch ($e->getType())
+            {
+                case 'global':
+                    $message = "Our site appears to be spammed. To give eveything a chance to calm down, please try again after {$free}.";
+                    break;
+                case 'ip':
+                    $message = "Too many unauthorized attemps have been made against your IP address. Please wait until {$free} before trying again.";
+                    break;
+                case 'user':
+                    $message = "Too many unauthorized attemps have been made against your account. For your security, your account is locked until {$free}.";
+                    break;
+            }
+
+            
+            $error = [
+                ['field' => 'password', 'message' => $message],
+            ];
+            return response(["success" => false, "select" => "password", "error" => $error ], 403);
+        }
+
 
         return parent::render($request, $e);
     }

@@ -15,6 +15,12 @@ angular.module('factories.general',[])
             if(rejection.status === 401){
                 $rootScope.$state.go('login');         
             }
+
+            if(rejection.status === 403){
+                return rejection;
+            }
+
+
             return $q.reject(rejection);
          }
     };

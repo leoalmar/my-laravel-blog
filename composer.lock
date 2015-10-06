@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "502a3869f9266c437388dd4b1bc117dd",
+    "content-hash": "ae4760651e6c3d336db406d27dc6305a",
     "packages": [
         {
             "name": "cartalyst/sentinel",
