@@ -79,7 +79,7 @@ angular.module('dashboard',[
 
 })
 
-.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,defaultErrorMessageResolver,UsersService) {
+.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,$parse,defaultErrorMessageResolver,UsersService) {
 
 	/*
 	 * Angular Auto Validate errors messages config
@@ -89,21 +89,19 @@ angular.module('dashboard',[
 
     $rootScope.responseErrorValidate = function(form,response){
 
+    	var responsePrefix = 'response';
+
     	var error = response.error;
 
+		defaultErrorMessageResolver.getErrorMessages().then(function (errorMessages) {
+			error.forEach(function(element, index, array){
+	        	errorMessages[responsePrefix+element.field] = element.message;
+	        });		
+		});
+
 		error.forEach(function(element, index, array){
-
-			var field = element.field;
-			var message = element.message;
-			var responseName = 'response'+field;
-
-			defaultErrorMessageResolver.getErrorMessages().then(function (errorMessages) {
-	          errorMessages[responseName] = message;
-	        });
-
-			eval("form."+field+".$validators."+responseName+" = function(){return false;};");
-	        eval("form."+field+".$validate();");
-			
+			eval("form."+element.field+".$validators."+responsePrefix+element.field+" = function(){return false;};");
+	        eval("form."+element.field+".$validate();");			
 		});
 
 		if(response.focus || response.select){
@@ -113,6 +111,11 @@ angular.module('dashboard',[
 				$("[name="+response.select+"]").select();						
 			}
 		}
+
+		error.forEach(function(element, index, array){
+			eval("form."+element.field+".$validators."+responsePrefix+element.field+" = function(){return true;};");
+		});
+
     };
 
 

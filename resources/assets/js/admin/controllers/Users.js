@@ -2,8 +2,7 @@ angular.module('controller.users',[])
 
 .controller("LoginCtrl", function($rootScope,$scope,$state,$stateParams,UsersService,defaultErrorMessageResolver){
 
-	$scope.user 	= false;
-	$scope.loading 	= false;
+	$scope.user = false;
 
 	$scope.submitForm = function(form){
 
@@ -16,9 +15,9 @@ angular.module('controller.users',[])
 			if(response.success){
 				$state.go("home",null,{reload: true});
 			}else{
+				$scope.loading = false;
 				$rootScope.responseErrorValidate(form,response);				
 			}
-			$scope.loading = false;
 
 		},function(){
 			$scope.loading = false;

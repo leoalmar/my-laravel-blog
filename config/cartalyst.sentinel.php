@@ -245,17 +245,17 @@ return [
 
         'ip' => [
 
-            'interval' => 10,
+            'interval' => 900,
 
-            'thresholds' => 100000,
+            'thresholds' => 10,
 
         ],
 
         'user' => [
 
-            'interval' => 10,
+            'interval' => 900,
 
-            'thresholds' => 1000000,
+            'thresholds' => 10,
 
         ],
 

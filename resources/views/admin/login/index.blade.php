@@ -10,7 +10,7 @@
 
 			<div class="panel-body">
 
-				<form ng-submit="submitForm(form)" ng-submit-force="true" name="form"  novalidate="novalidate" >
+				<form ng-submit="submitForm(form)" name="form"  novalidate="novalidate" >
 					<div class="panel-body">
 						<div class="row">
 							<div class="form-group col-xs-12">
@@ -26,7 +26,9 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-xs-12 text-right">								
-								<button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-sign-in"></i> <strong>Login</strong></button>
+								<button ng-disabled="loading" class="btn btn-primary" type="submit">
+									<i class="fa fa-fw" ng-class="{ 'fa-sign-in' : !loading, 'fa-spinner fa-spin' : loading }"></i> <strong>Login</strong>
+								</button>
 							</div>
 						</div>				
 					</div>

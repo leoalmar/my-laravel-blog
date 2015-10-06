@@ -2,7 +2,7 @@
 	<div class="container">
 	
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dashboard-menu">
+			<button ng-if=" $state.current.name != 'login' " type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dashboard-menu">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>

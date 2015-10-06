@@ -125,30 +125,20 @@ class UsersController extends Controller {
 		$user = Sentinel::authenticate($creadentials, true);
 
 		if ( $user ) {
-
 			return response([ "success" => true, "user" => $user ], 200);
 		} 
 		else
 		{
-			
 			$error = [
-				[
-		    	'field' => 'password',
-		    	'message' => 'Invalid email or password',
-		    	]
+				['field' => 'password', 'message' => 'Invalid login'],
 		    ];
-			
 			return response(["success" => false, "select" => "password", "error" => $error ], 203);
-		}
-
+		}		
 	}
 
 	public function logout(){
-
 		Sentinel::logout();
-		return response(["success" => true],200);
-		
+		return response(["success" => true],200);		
 	}
-
 
 }

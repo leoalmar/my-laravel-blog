@@ -1,6 +1,9 @@
 <?php
 
 
+// Disable checkpoints (throttling, activation) for demo purposes
+Sentinel::disableCheckpoints();
+
 /* ================ SITE'S ROUTES ============================================================= */
 $router->group(['as' => 'site.'], function() {
 
