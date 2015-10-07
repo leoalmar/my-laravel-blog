@@ -29,11 +29,22 @@ body {
 
 	.breadcrumb{
 		background-color: $default-color !important;
-		color: silver;
-		strong{
+		font-size: em(16);
+		span{
 			color: white;
+			font-weight: bold;
 		}
 		a{
+			@include single-transition(all, 100ms);
+			color: white;
+			&:hover{
+				color: black;
+			}
+		}
+
+		> li + li:before{
+			color: black;
+			content: '\0000a0>';
 			font-weight: bold;
 		}
 	}

@@ -22,10 +22,21 @@ angular.module('dashboard',[
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider){
 	
-	function generalResolver(){
+	/**
+	 * This function is used for almost all routes.
+	 * Will be responsible to check if the user is logged in and if the current route has the
+	 * pourpose to create a new resource or is just for edit the resource data.
+	 * 
+	 * @param  boolean add Should be true when the page is to create a new resource. Ex.: When the page is for create a new user add value should be true, and when the page is for edit the user data, the add value can be false or just not informed.
+	 * @return object
+	 */
+	function generalResolver(add){
 		return {
 			check : function($rootScope) {
 				return $rootScope.check();
+			},
+			Add : function(){
+				return add || false;
 			}
 		};
 	}
@@ -58,12 +69,21 @@ angular.module('dashboard',[
 			templateUrl: "view/admin.users.index",
 			resolve: generalResolver(),
 			breadcrumbs : [
-				{ label : 'Usuários' }
+				{ label : 'Users' }
 			],
-			add : {
-				state : "add_user",
-				text : "Cadastrar novo usuário"
-			}
+			add_button : { state : "add_user", text : "Cadastrar novo usuário" }
+		},
+		{
+			name : "user",
+			url: "/users/user/{id:int}",
+			cache: false,
+			controller: "UserCtrl",
+			templateUrl: "view/admin.users.user",
+			resolve: generalResolver(true),
+			breadcrumbs : [
+				{ label : 'Users', state : "users" },
+				{ label : 'User data' }
+			]
 		}
 	];
 

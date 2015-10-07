@@ -1,5 +1,15 @@
 angular.module('directives.general',[])
 
+.directive('unique', function ($http) {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function (scope, iElement, iAttrs) {
+			console.log(scope, iElement, iAttrs);
+		}
+	};
+})
+
 .directive("ngFileSelect",function(){
 	return {
 		link: function($scope,el){

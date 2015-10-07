@@ -13,7 +13,7 @@
 
 		<div ng-if=" $state.current.name != 'login' " class="collapse navbar-collapse" id="dashboard-menu">
 			<ul class="nav navbar-nav">
-				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item) )" ng-class="{ active: ( activeMenu(item) || manualActiveMenu == item ) }" >
+				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item) )" ui-sref-active="active" ng-class="" >
 					<a href="#" ui-sref="{{ item.sref }}" ui-reload="true" tooltip-placement="bottom" tooltip="{{ item.label }}">
 						<span class="hidden-xs"><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i></span>
 						<span class="visible-xs"><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}</span>
