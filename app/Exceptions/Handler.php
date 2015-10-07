@@ -46,6 +46,11 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
+        /**
+         * Sentinel excetion handler
+         *
+         * Used to return a JSON object for the Angular Login Implementation
+         */
         if ($e instanceof \Cartalyst\Sentinel\Checkpoints\ThrottlingException) {
 
             $free = $e->getFree()->format('d M, h:i:s a');
@@ -53,7 +58,7 @@ class Handler extends ExceptionHandler
             switch ($e->getType())
             {
                 case 'global':
-                    $message = "Our site appears to be spammed. To give eveything a chance to calm down, please try again after {$free}.";
+                    $message = "Our site appears to be spammed. To give everything a chance to calm down, please try again after {$free}.";
                     break;
                 case 'ip':
                     $message = "Too many unauthorized attemps have been made against your IP address. Please wait until {$free} before trying again.";
@@ -62,7 +67,6 @@ class Handler extends ExceptionHandler
                     $message = "Too many unauthorized attemps have been made against your account. For your security, your account is locked until {$free}.";
                     break;
             }
-
             
             $error = [
                 ['field' => 'password', 'message' => $message],
