@@ -5,7 +5,10 @@ angular.module('directives.general',[])
 		restrict: 'A',
 		require: 'ngModel',
 		link: function (scope, iElement, iAttrs) {
-			console.log(scope, iElement, iAttrs);
+			
+		},
+		controller : function($scope, $http){
+			
 		}
 	};
 })
