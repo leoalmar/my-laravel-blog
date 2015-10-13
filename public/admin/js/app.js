@@ -791,11 +791,15 @@ angular.module('directives.general',[])
 	return {
 		restrict: 'A',
 		require: 'ngModel',
-		link: function (scope, iElement, iAttrs) {
+		link: function (scope, element, attrs, ngModel) {
 			
-		},
-		controller : function($scope, $http){
-			
+			element.bind('blur',function(){
+				
+				console.log(ngModel.$viewValue);
+				console.log(ngModel.$modelValue);
+				
+			});
+
 		}
 	};
 })

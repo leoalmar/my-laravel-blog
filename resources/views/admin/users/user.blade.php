@@ -30,7 +30,7 @@
 			<div class="row">			
 				<div class="form-group col-md-4">
 					<label class="control-label" for="email" >*Email</label>
-					<input class="form-control" type="email" id="email" name="email" ng-model="user.email" maxlength="64" ng-minlength="3" required >
+					<input class="form-control" type="email" id="email" name="email" ng-model="user.email" maxlength="64" ng-minlength="3" unique required >
 				</div>
 				<div class="form-group col-md-3">
 					<label class="control-label" for="password" ><span ng-if="add">*</span>Password</label>
