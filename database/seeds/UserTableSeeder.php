@@ -35,6 +35,7 @@ class UserTableSeeder extends Seeder {
 			"admin.users.show" => true,
 			"admin.users.store" => true,
 			"admin.users.update" => true,
+			"admin.users.is_unique" => true,
 		];
 
 		$role->save();

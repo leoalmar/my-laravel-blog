@@ -141,4 +141,30 @@ class UsersController extends Controller {
 		return response(["success" => true],200);		
 	}
 
+	public function isUnique(){
+
+		$data = Request::json()->all();
+
+		$fields = ['email'];
+
+		if($data["field"] && in_array($data["field"], $fields) ){
+
+			if( !Sentinel::getUserRepository()->where($data["field"],'=', $data["value"])->exists() ){
+				
+				return response()->json(["success" => true]);
+
+			}else{
+				
+				return response()->json(["success" => false]);
+			}
+
+		}else{
+
+			return response()->json(["success" => false, "message" => "Field not allowed!"]);
+		}
+
+
+
+	}
+
 }

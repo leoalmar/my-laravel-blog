@@ -15,11 +15,11 @@
 			<div class="row">				
 				<div class="form-group col-md-4">
 					<label class="control-label" for="first_name" >*First Name</label>
-					<input class="form-control" type="text" id="first_name" name="first_name" ng-model="user.first_name" maxlength="30" ng-minlength="3" required focus="true" >
+					<input class="form-control" type="text" id="first_name" name="first_name" ng-model="user.first_name" maxlength="128" ng-minlength="3" required focus="true" >
 				</div>
 				<div class="form-group col-md-4">
 					<label class="control-label" for="last_name" >*Last Name</label>
-					<input class="form-control" type="text" id="last_name" name="last_name" ng-model="user.last_name" maxlength="64" ng-minlength="3" required >
+					<input class="form-control" type="text" id="last_name" name="last_name" ng-model="user.last_name" maxlength="128" ng-minlength="3" required >
 				</div>
 			</div>
 
@@ -30,7 +30,7 @@
 			<div class="row">			
 				<div class="form-group col-md-4">
 					<label class="control-label" for="email" >*Email</label>
-					<input class="form-control" type="email" id="email" name="email" ng-model="user.email" maxlength="64" ng-minlength="3" unique required >
+					<input class="form-control" type="email" id="email" name="email" ng-model="user.email" maxlength="128" ng-minlength="3" unique="email" required >
 				</div>
 				<div class="form-group col-md-3">
 					<label class="control-label" for="password" ><span ng-if="add">*</span>Password</label>

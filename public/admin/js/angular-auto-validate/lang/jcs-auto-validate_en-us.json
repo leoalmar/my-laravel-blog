@@ -12,6 +12,8 @@
     "url": "Please enter a valid URL in the format of http(s)://www.google.com",
 
     "invalidUser" : "Please check the given information!",
+    "uniqueUser" : "The email is already registered",
+    "passwordMatch" : "The password does not match",
     
     "tooYoung" : "Você precisa ter pelo menos {0} anos de idade para usar este site",
     "tooOld" : "Você precisa ter no máximo {0} anos de idade para usar este site",

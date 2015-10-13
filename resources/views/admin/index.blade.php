@@ -61,7 +61,12 @@
 	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js') ]]
 	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js') ]]
 	
+	<?php 
+	/*
 	[[ Html::script('//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_pt-br.js') ]]
+	*/
+	?>
+	
 	
 	[[ Html::script('admin/js/app.js') ]]
 	

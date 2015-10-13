@@ -20,13 +20,18 @@ $router->group(['prefix' => 'admin'], function() use ($router) {
 	Route::post('authenticate', ['as' => 'admin.authenticate', 'uses' => 'Admin\UsersController@login' ]);
 	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Admin\UsersController@logout' ]);
 	
+
+
 	$router->group(['middleware' => ['AdminAuth']], function() { 
 
 		Route::get('check', ['as' => 'admin.check', 'uses' => 'Admin\UsersController@check']); 
 
 
+
 		Route::resource('users', 'Admin\UsersController');
 		Route::resource('permissions', 'Admin\PermissionsController');
+		Route::post('is-unique', ['as' => 'admin.users.is_unique', 'uses' => 'Admin\UsersController@isUnique']); 
+		
 
 	});
 });
@@ -39,3 +44,12 @@ $router->group(['prefix' => 'admin'], function() use ($router) {
 Route::get('view/{name_view}', function ($name_view) {
 	return view($name_view);
 });
+
+
+
+
+
+
+
+
+

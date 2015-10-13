@@ -148,8 +148,9 @@ angular.module('dashboard',[
 	/*
 	 * Angular Auto Validate errors messages config
 	 */
+	angular.autoValidate.errorMessages = {}; // fix the bug to search the JSON file with messages
 	defaultErrorMessageResolver.setI18nFileRootPath('admin/js/angular-auto-validate/lang/');
-    defaultErrorMessageResolver.setCulture('pt-br');
+    defaultErrorMessageResolver.setCulture('en-us');
 
     $rootScope.responseErrorValidate = function(form,response){
 
@@ -787,19 +788,32 @@ angular.module('factories.general',[])
 
 angular.module('directives.general',[])
 
-.directive('unique', function ($http) {
+.directive('unique', function ($http,$q) {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
 		link: function (scope, element, attrs, ngModel) {
 			
-			element.bind('blur',function(){
-				
-				console.log(ngModel.$viewValue);
-				console.log(ngModel.$modelValue);
-				
-			});
+			var modelValue = ngModel.$modelValue;
+			var viewValue = ngModel.$viewValue;
+			
+			ngModel.$asyncValidators.uniqueUser = function (modelValue, viewValue) {
 
+				var deferred = $q.defer();
+				var currentValue = modelValue || viewValue;
+
+				$http.post('/admin/is-unique',{
+					field : attrs.unique,
+					value : currentValue
+				}).then(function (results) {
+                    if (results.data.success) {
+                        deferred.resolve(); //It's unique
+                    } else {
+                        deferred.reject(); //Add unique to $errors
+                    }
+                });
+				return deferred.promise;
+            };
 		}
 	};
 })

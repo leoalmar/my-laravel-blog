@@ -27,7 +27,7 @@ class AdminAuth {
 		 * Check if the user is logged, then return HTTP 401 status
 		 */
 		if(!$user = Sentinel::check()){
-        	return response(['success' => false], 401);
+        	return response(['success' => false, "due" => "not logged"], 401);
         }
 
         if($route_name == "admin.check") {
@@ -50,7 +50,7 @@ class AdminAuth {
 			return $next($request);
 		}	
 
-		return response(['success' => true],401);
+		return response(['success' => false, "due" => "route not allowed: " . $route_name], 401);
 
 	}
 }

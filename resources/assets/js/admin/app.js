@@ -104,8 +104,9 @@ angular.module('dashboard',[
 	/*
 	 * Angular Auto Validate errors messages config
 	 */
+	angular.autoValidate.errorMessages = {}; // fix the bug to search the JSON file with messages
 	defaultErrorMessageResolver.setI18nFileRootPath('admin/js/angular-auto-validate/lang/');
-    defaultErrorMessageResolver.setCulture('pt-br');
+    defaultErrorMessageResolver.setCulture('en-us');
 
     $rootScope.responseErrorValidate = function(form,response){
 
