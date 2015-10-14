@@ -45,23 +45,12 @@ angular.module('controller.users',[])
 
 	$scope.add = Add;
 
+
+
 	$scope.user = !Add ? false : new UsersService.resource();
 
 	$scope.fileURL = false;	
 	$scope.loading = false;
-
-    $scope.getFile = function () {
-        fileReader
-        	.readAsDataUrl($scope.file, $scope)
-            .then(function(result) {
-            	var fileName = $scope.file.name.split('.');
-				var extension = fileName.pop().toLowerCase();
-
-				if( extension == "jpeg" || extension == "jpg" || extension == "bmp" || extension == "png" || extension == "gif" ){
-            		$scope.user.image = result;
-				}
-            });
-    };
 	
 	$scope.save = function(form){
 		$scope.loading = true;
@@ -85,10 +74,11 @@ angular.module('controller.users',[])
 			$scope.fileURL = data.image;
 			delete data.image;
 	        return data;
-	    }); 
+	    });
 	}
 
 })
+
 .controller("PermissionsCtrl",function($rootScope,$scope,$state,$stateParams,PermissionsService){
 
 	$scope.user = false;

@@ -5,18 +5,20 @@ angular.module('directives.general',[])
 		restrict: 'A',
 		require: 'ngModel',
 		link: function (scope, element, attrs, ngModel) {
-			
+	
+            var id = scope.user.id;
+
 			var modelValue = ngModel.$modelValue;
 			var viewValue = ngModel.$viewValue;
+			var email = modelValue || viewValue;
 			
-			ngModel.$asyncValidators.uniqueUser = function (modelValue, viewValue) {
+			ngModel.$asyncValidators.uniqueUser = function (id, email) {
 
 				var deferred = $q.defer();
-				var currentValue = modelValue || viewValue;
 
 				$http.post('/admin/is-unique',{
-					field : attrs.unique,
-					value : currentValue
+					id : scope.user.id,
+					email : email
 				}).then(function (results) {
                     if (results.data.success) {
                         deferred.resolve(); //It's unique
@@ -26,6 +28,9 @@ angular.module('directives.general',[])
                 });
 				return deferred.promise;
             };
+			
+		
+
 		}
 	};
 })

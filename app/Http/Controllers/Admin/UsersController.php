@@ -18,7 +18,8 @@ class UsersController extends Controller {
 	 */
 	public function index()
 	{
-		$users = Sentinel::getUserRepository()->orderBy('first_name')->get();
+		$users = Sentinel::setModel('App\Models\User')->orderBy('first_name')->get();
+		
 		return response()->json($users);
 	}
 
@@ -55,7 +56,8 @@ class UsersController extends Controller {
 	 */
 	public function show($id)
 	{
-		$user = Sentinel::findUserByID($id);
+		$user = Sentinel::setModel('App\Models\User')->find($id);
+		
 		return response()->json($user);
 	}
 
@@ -145,26 +147,18 @@ class UsersController extends Controller {
 
 		$data = Request::json()->all();
 
-		$fields = ['email'];
+		$user = Sentinel::findByCredentials(["email" => $data["email"]]);
 
-		if($data["field"] && in_array($data["field"], $fields) ){
+		if( $user ){
+			
+			$owner = ($user->id == $data['id']);
 
-			if( !Sentinel::getUserRepository()->where($data["field"],'=', $data["value"])->exists() ){
-				
-				return response()->json(["success" => true]);
-
-			}else{
-				
-				return response()->json(["success" => false]);
-			}
+			return response()->json(["success" => $owner]);
 
 		}else{
-
-			return response()->json(["success" => false, "message" => "Field not allowed!"]);
+			
+			return response()->json(["success" => true]);
 		}
-
-
-
 	}
 
 }

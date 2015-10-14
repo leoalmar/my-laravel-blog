@@ -123,7 +123,7 @@ angular.module('dashboard',[
 			cache: false,
 			controller: "UserCtrl",
 			templateUrl: "view/admin.users.user",
-			resolve: generalResolver(true),
+			resolve: generalResolver(),
 			breadcrumbs : [
 				{ label : 'Users', state : "users" },
 				{ label : 'User data' }
@@ -493,23 +493,12 @@ angular.module('controller.users',[])
 
 	$scope.add = Add;
 
+
+
 	$scope.user = !Add ? false : new UsersService.resource();
 
 	$scope.fileURL = false;	
 	$scope.loading = false;
-
-    $scope.getFile = function () {
-        fileReader
-        	.readAsDataUrl($scope.file, $scope)
-            .then(function(result) {
-            	var fileName = $scope.file.name.split('.');
-				var extension = fileName.pop().toLowerCase();
-
-				if( extension == "jpeg" || extension == "jpg" || extension == "bmp" || extension == "png" || extension == "gif" ){
-            		$scope.user.image = result;
-				}
-            });
-    };
 	
 	$scope.save = function(form){
 		$scope.loading = true;
@@ -533,10 +522,11 @@ angular.module('controller.users',[])
 			$scope.fileURL = data.image;
 			delete data.image;
 	        return data;
-	    }); 
+	    });
 	}
 
 })
+
 .controller("PermissionsCtrl",function($rootScope,$scope,$state,$stateParams,PermissionsService){
 
 	$scope.user = false;
@@ -793,18 +783,20 @@ angular.module('directives.general',[])
 		restrict: 'A',
 		require: 'ngModel',
 		link: function (scope, element, attrs, ngModel) {
-			
+	
+            var id = scope.user.id;
+
 			var modelValue = ngModel.$modelValue;
 			var viewValue = ngModel.$viewValue;
+			var email = modelValue || viewValue;
 			
-			ngModel.$asyncValidators.uniqueUser = function (modelValue, viewValue) {
+			ngModel.$asyncValidators.uniqueUser = function (id, email) {
 
 				var deferred = $q.defer();
-				var currentValue = modelValue || viewValue;
 
 				$http.post('/admin/is-unique',{
-					field : attrs.unique,
-					value : currentValue
+					id : scope.user.id,
+					email : email
 				}).then(function (results) {
                     if (results.data.success) {
                         deferred.resolve(); //It's unique
@@ -814,6 +806,9 @@ angular.module('directives.general',[])
                 });
 				return deferred.promise;
             };
+			
+		
+
 		}
 	};
 })

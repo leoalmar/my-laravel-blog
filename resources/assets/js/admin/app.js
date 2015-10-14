@@ -79,7 +79,7 @@ angular.module('dashboard',[
 			cache: false,
 			controller: "UserCtrl",
 			templateUrl: "view/admin.users.user",
-			resolve: generalResolver(true),
+			resolve: generalResolver(),
 			breadcrumbs : [
 				{ label : 'Users', state : "users" },
 				{ label : 'User data' }
