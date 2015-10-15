@@ -80,11 +80,24 @@ angular.module('dashboard',[
 		};
 	}
 
+	/**
+	 * This variable is used to add the propertie to all routes
+	 * 
+	 * @type Object
+	 */
+	var configRoutes = {
+		cache : false
+	};
+
+	/**
+	 * Routes array
+	 * 
+	 * @type Array
+	 */
 	var routes = [
 	    {
 	    	name : 'login',
 			url: "/login",
-			cache: false,
 			templateUrl: "view/admin.login.index",
 			controller: "LoginCtrl",
 			breadcrumbs : false
@@ -92,7 +105,6 @@ angular.module('dashboard',[
 		{
 	        name: 'home',
 	        url: '/',
-			cache: false,
 			controller: "HomeCtrl",
 			templateUrl: "view/admin.home.index",
 			resolve: generalResolver(),
@@ -101,7 +113,6 @@ angular.module('dashboard',[
 		{
 			name : "users",
 			url: "/users",
-			cache: false,
 			controller: "UsersCtrl",
 			templateUrl: "view/admin.users.index",
 			resolve: generalResolver(),
@@ -111,7 +122,6 @@ angular.module('dashboard',[
 		{
 			name : "user",
 			url: "/users/user/:id",
-			cache: false,
 			controller: "UserCtrl",
 			templateUrl: "view/admin.users.user",
 			resolve: generalResolver(),
@@ -120,7 +130,7 @@ angular.module('dashboard',[
 	];
 
 	for(i in routes){
-    	$stateProvider.state(routes[i]);
+    	$stateProvider.state( angular.extend(routes[i], configRoutes) );
 	}
 
 	$urlRouterProvider.otherwise(function(){
