@@ -23,20 +23,15 @@ angular.module('dashboard',[
 .config(function($httpProvider, $stateProvider, $urlRouterProvider){
 	
 	/**
-	 * This function is used for almost all routes.
-	 * Will be responsible to check if the user is logged in and if the current route has the
-	 * pourpose to create a new resource or is just for edit the resource data.
-	 * 
-	 * @param  boolean add Should be true when the page is to create a new resource. Ex.: When the page is for create a new user add value should be true, and when the page is for edit the user data, the add value can be false or just not informed.
+	 * This function is used for the most of routes.
+	 * Will be responsible to check if the user is logged.
+	 *  
 	 * @return object
 	 */
-	function generalResolver(add){
+	function generalResolver(){
 		return {
 			check : function($rootScope) {
 				return $rootScope.check();
-			},
-			Add : function(){
-				return add || false;
 			}
 		};
 	}
@@ -57,9 +52,7 @@ angular.module('dashboard',[
 			controller: "HomeCtrl",
 			templateUrl: "view/admin.home.index",
 			resolve: generalResolver(),
-			breadcrumbs : [
-				{ label : 'Home' }
-			]
+			breadcrumbs : [{ label : 'Home' }]
 	    },
 		{
 			name : "users",
@@ -68,22 +61,17 @@ angular.module('dashboard',[
 			controller: "UsersCtrl",
 			templateUrl: "view/admin.users.index",
 			resolve: generalResolver(),
-			breadcrumbs : [
-				{ label : 'Users' }
-			],
-			add_button : { state : "add_user", text : "Cadastrar novo usuário" }
+			breadcrumbs : [{ label : 'Users' }],
+			add_button : { state : "user", text : "Cadastrar novo usuário" }
 		},
 		{
 			name : "user",
-			url: "/users/user/{id:int}",
+			url: "/users/user/:id?",
 			cache: false,
 			controller: "UserCtrl",
 			templateUrl: "view/admin.users.user",
 			resolve: generalResolver(),
-			breadcrumbs : [
-				{ label : 'Users', state : "users" },
-				{ label : 'User data' }
-			]
+			breadcrumbs : [{ label : 'Users', state : "users" },{ label : 'User data' }]
 		}
 	];
 

@@ -12,24 +12,26 @@ angular.module('directives.general',[])
 			var viewValue = ngModel.$viewValue;
 			var email = modelValue || viewValue;
 			
-			ngModel.$asyncValidators.uniqueUser = function (id, email) {
+			setTimeout(function(){
+				
+				ngModel.$asyncValidators.uniqueUser = function (email) {
 
-				var deferred = $q.defer();
+					var deferred = $q.defer();
 
-				$http.post('/admin/is-unique',{
-					id : scope.user.id,
-					email : email
-				}).then(function (results) {
-                    if (results.data.success) {
-                        deferred.resolve(); //It's unique
-                    } else {
-                        deferred.reject(); //Add unique to $errors
-                    }
-                });
-				return deferred.promise;
-            };
-			
-		
+					$http.post('/admin/is-unique',{
+						id : scope.user.id,
+						email : email
+					}).then(function (results) {
+	                    if (results.data.success) {
+	                        deferred.resolve(); //It's unique
+	                    } else {
+	                        deferred.reject(); //Add unique to $errors
+	                    }
+	                });
+					return deferred.promise;
+	            };
+
+			},0);
 
 		}
 	};
@@ -120,3 +122,9 @@ angular.module('directives.general',[])
         }
     };
 })
+
+
+
+
+
+

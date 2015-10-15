@@ -33,19 +33,13 @@ class UsersController extends Controller {
 		
 		$data = Request::json()->all();
 
-		if( isset( $data["image"] ) && $data["image"] != "" ){
-
-			$data["image"] = parent::uploadFile($data["image"],"img/users");
-
-		}
-		
 		unset($data["password_confirmation"]);
 
-		$data['activated'] = true; 
-
-		$user = Sentinel::createUser($data);
+		$user = Sentinel::registerAndActivate($data);
 		
-		return response()->json(["success" => true], 201);
+		unset($user->password);
+
+		return response()->json(["success" => true, "user" => $user ], 201);
 	}
 
 	/**
@@ -75,17 +69,12 @@ class UsersController extends Controller {
 		$data = Request::json()->all();
 
 		// Update the user details
-		$user->email 		= $data["email"];
 		$user->first_name 	= $data["first_name"];
 		$user->last_name 	= $data["last_name"];
+		$user->email 		= $data["email"];
 
 		if( isset( $data["password"] ) && $data["password"] != "" ){
 			$user->password = $data["password"];
-		}
-
-		if( isset( $data["image"] ) && $data["image"] != "" ){
-			if($user->image) parent::removeFile($user->image, "img/users");
-			$user->image = parent::uploadFile($data["image"],"img/users");
 		}
 
 		// Update the user
@@ -98,7 +87,7 @@ class UsersController extends Controller {
 			// User information was not updated
 		}
 
-		return response($user);
+		return response()->json($user,200);
 	}
 
 	/**
@@ -108,7 +97,7 @@ class UsersController extends Controller {
 	 * @return Response
 	 */
 	public function destroy($id)
-	{		
+	{
 		// Find the user using the user id
 	    $user = Sentinel::findUserById($id);
 	    
@@ -120,7 +109,8 @@ class UsersController extends Controller {
 		return response()->json(["success" => true]);
 	}
 
-	public function login(){
+	public function login()
+	{
 
 		$creadentials = Request::json()->all();
 
@@ -138,12 +128,14 @@ class UsersController extends Controller {
 		}		
 	}
 
-	public function logout(){
+	public function logout()
+	{
 		Sentinel::logout();
 		return response(["success" => true],200);		
 	}
 
-	public function isUnique(){
+	public function isUnique()
+	{
 
 		$data = Request::json()->all();
 
@@ -151,12 +143,12 @@ class UsersController extends Controller {
 
 		if( $user ){
 			
-			$owner = ($user->id == $data['id']);
+			$owner = (isset($data['id']) && $data['id'] == $user->id);
 
 			return response()->json(["success" => $owner]);
-
-		}else{
-			
+		}
+		else
+		{			
 			return response()->json(["success" => true]);
 		}
 	}

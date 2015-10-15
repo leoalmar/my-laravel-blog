@@ -41,41 +41,44 @@ angular.module('controller.users',[])
 
 })
 
-.controller("UserCtrl",function($rootScope,$scope,$state,$stateParams,UsersService,Add,fileReader){
+.controller("UserCtrl",function($rootScope,$scope,$state,$stateParams,UsersService,fileReader){
 
-	$scope.add = Add;
-
-
-
-	$scope.user = !Add ? false : new UsersService.resource();
-
-	$scope.fileURL = false;	
 	$scope.loading = false;
-	
-	$scope.save = function(form){
-		$scope.loading = true;
-		if($scope.add){
-			$scope.user.$save(function() {
-				$scope.loading = false;
-				$state.go("users",{reload: true});
-			});
-		}else{
-			$scope.user.$update(function(data) {
-				$scope.loading = false;
-				$scope.fileURL = data.image;
-				delete data.image;
-				$state.go("users",{reload: true});
-			});
-		}
-	};
 
-	if(!Add){
-		$scope.user = UsersService.resource.get( { id:$stateParams.id },function(data){
-			$scope.fileURL = data.image;
-			delete data.image;
+	$scope.add = ($stateParams.id == ""); // Check if the page is Creating ou Updating resource
+
+	if($scope.add)
+	{
+		$scope.user = new UsersService.resource();
+	}
+	else
+	{
+		$scope.user = UsersService.resource.get({ id:$stateParams.id }, function(data){
 	        return data;
 	    });
 	}
+	
+	$scope.save = function(form){
+		
+		$scope.loading = true;
+
+		if($scope.add){
+			// Creating
+			$scope.user.$save(function(data) {
+				$scope.loading = false;
+				$state.go("users",null,{reload: true});
+			});
+		
+		}else{
+			// Updating
+			$scope.user.$update(function(data) {
+				$scope.loading = false;
+				$state.go("users",null,{reload: true});
+			});
+		
+		}
+	};
+
 
 })
 
