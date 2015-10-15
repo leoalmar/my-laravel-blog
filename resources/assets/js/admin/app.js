@@ -66,7 +66,7 @@ angular.module('dashboard',[
 		},
 		{
 			name : "user",
-			url: "/users/user/:id?",
+			url: "/users/user/:id",
 			cache: false,
 			controller: "UserCtrl",
 			templateUrl: "view/admin.users.user",
