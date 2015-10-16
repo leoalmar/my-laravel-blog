@@ -13,16 +13,22 @@
 
 		<div ng-if=" $state.current.name != 'login' " class="collapse navbar-collapse" id="dashboard-menu">
 			<ul class="nav navbar-nav">
-				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item) )" ui-sref-active="active" ng-class="" >
-					<a href="#" ui-sref="{{ item.sref }}" ui-reload="true" data-trigger="hover" data-placement="bottom" data-title="{{ item.label }}" bs-tooltip>
-						<span class="hidden-xs"><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i></span>
-						<span class="visible-xs"><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}</span>
+				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item) )" ui-sref-active="active" >
+					<a ui-sref="{{ item.sref }}" 
+					   ui-reload="true" 
+					   data-trigger="hover" 
+					   data-placement="bottom" 
+					   data-title="{{ item.label }}" 
+					   data-toggle="collapse"
+					   data-target="#dashboard-menu"
+					   bs-tooltip >
+						<span><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}</span>
 					</a>
 				</li>
 			</ul>
     		<ul class="nav navbar-nav navbar-right" ng-ig="user">
     			<li>
-    				<a href="#" ng-click="logout()" tooltip-placement="bottom" tooltip="Logout">{{ user.first_name }} <i class="fa fa-fw fa-sign-out"></i></a>
+    				<a href="#" ng-click="logout()" data-trigger="hover" data-placement="bottom" data-title="Logout" bs-tooltip>{{ user.first_name }} <i class="fa fa-fw fa-sign-out"></i></a>
     			</li>
     		</ul>
 		</div>
