@@ -49,11 +49,7 @@
 	[[ Html::script('//code.jquery.com/jquery-2.1.4.min.js') ]]
 	[[ Html::script('//code.jquery.com/ui/1.11.4/jquery-ui.min.js') ]]
 
-	[[ Html::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') ]]
 	[[ Html::script('/admin/js/ckeditor/ckeditor.js') ]]
-		
-
-
 	
 	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js') ]]
 	[[ Html::script('//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js') ]]

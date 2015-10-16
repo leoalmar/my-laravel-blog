@@ -14,11 +14,11 @@
 		<div ng-if=" $state.current.name != 'login' " class="collapse navbar-collapse" id="dashboard-menu">
 			<ul class="nav navbar-nav">
 				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item) )" ui-sref-active="active" ng-class="" >
-					<a href="#" ui-sref="{{ item.sref }}" ui-reload="true" tooltip-placement="bottom" tooltip="{{ item.label }}">
+					<a href="#" ui-sref="{{ item.sref }}" ui-reload="true" data-trigger="hover" data-placement="bottom" data-title="{{ item.label }}" bs-tooltip>
 						<span class="hidden-xs"><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i></span>
 						<span class="visible-xs"><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}</span>
 					</a>
-				</li> 
+				</li>
 			</ul>
     		<ul class="nav navbar-nav navbar-right" ng-ig="user">
     			<li>
@@ -28,4 +28,4 @@
 		</div>
 
 	</div>
-</nav>	
+</nav>

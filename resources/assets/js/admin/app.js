@@ -7,7 +7,7 @@ angular.module('dashboard',[
 	'ui.router',
 	'ui.mask',
 	'ui.sortable',
-	'ui.bootstrap',
+	'mgcrea.ngStrap',
 
 	'factories.general',
 	'directives.general',
@@ -137,8 +137,6 @@ angular.module('dashboard',[
 		});
 
     };
-
-
 
 
     // It's very handy to add references to $state and $stateParams to the $rootScope
