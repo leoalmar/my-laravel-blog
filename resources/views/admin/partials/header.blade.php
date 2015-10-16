@@ -8,21 +8,17 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#" ui-sref="home">My Laravel Blog - Dashboard</a>
+			<a class="navbar-brand" ui-sref="home">My Laravel Blog - Dashboard</a>
 		</div>
 
 		<div ng-if=" $state.current.name != 'login' " class="collapse navbar-collapse" id="dashboard-menu">
 			<ul class="nav navbar-nav">
-				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item) )" ui-sref-active="active" >
-					<a ui-sref="{{ item.sref }}" 
-					   ui-reload="true" 
-					   data-trigger="hover" 
-					   data-placement="bottom" 
-					   data-title="{{ item.label }}" 
-					   data-toggle="collapse"
-					   data-target="#dashboard-menu"
-					   bs-tooltip >
-						<span><i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}</span>
+				<li ng-repeat="item in sideMenu" ng-if="( user && hasAccess(item) )" >
+					<a class="hidden-xs" ui-sref="{{ item.sref }}" ui-reload="true" data-trigger="hover" data-placement="bottom" data-title="{{ item.label }}" bs-tooltip>
+						<i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}
+					</a>
+					<a class="visible-xs" ui-sref="{{ item.sref }}" ui-reload="true" ui-sref-active="active" data-toggle="collapse" data-target="#dashboard-menu" >
+						<i class="fa fa-fw fa-lg fa-{{ item.icon }}" ></i> {{ item.label }}
 					</a>
 				</li>
 			</ul>
