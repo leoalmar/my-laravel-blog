@@ -82,6 +82,14 @@ angular.module('dashboard',[
 			templateUrl: "view/admin.users.user",
 			resolve: generalResolver(),
 			breadcrumbs : [{ label : 'Users', state : "users" },{ label : 'User data' }]
+		},
+		{
+			name : "user_groups",
+			url: "/user_groups/:id",
+			controller: "GroupsCtrl",
+			templateUrl: "view/admin.users.groups",
+			resolve: generalResolver(),
+			breadcrumbs : [{ label : 'Users', state : "users" },{ label : 'User Groups' }]
 		}
 	];
 
