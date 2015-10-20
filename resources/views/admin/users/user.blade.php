@@ -1,8 +1,6 @@
 <div class="panel panel-default">	
 
-	<div class="panel-heading">
-		Edit user data
-	</div>
+	<div class="panel-heading">Edit user data</div>
 
 	<form name="form" ng-submit="save(form)" novalidate>
 

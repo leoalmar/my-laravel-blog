@@ -73,7 +73,7 @@ angular.module('dashboard',[
 			templateUrl: "view/admin.users.index",
 			resolve: generalResolver(),
 			breadcrumbs : [{ label : 'Users' }],
-			add_button : { state : "user", text : "Cadastrar novo usuário" }
+			add_button : { state : "user", text : "Users" }
 		},
 		{
 			name : "user",
@@ -84,12 +84,12 @@ angular.module('dashboard',[
 			breadcrumbs : [{ label : 'Users', state : "users" },{ label : 'User data' }]
 		},
 		{
-			name : "user_groups",
-			url: "/user_groups/:id",
-			controller: "GroupsCtrl",
-			templateUrl: "view/admin.users.groups",
+			name : "roles",
+			url: "/roles",
+			controller: "RolesCtrl",
+			templateUrl: "view/admin.roles.index",
 			resolve: generalResolver(),
-			breadcrumbs : [{ label : 'Users', state : "users" },{ label : 'User Groups' }]
+			breadcrumbs : [{ label : 'Roles', state : "roles" },{ label : 'Roles' }]
 		}
 	];
 
@@ -175,6 +175,13 @@ angular.module('dashboard',[
     		sref : "users",
     		activeState : ['users'],
     		permissions : ["admin.users."]
+    	},
+    	"roles" : {
+    		label : "Roles",
+    		icon : "puzzle-piece",
+    		sref : "roles",
+    		activeState : ['roles'],
+    		permissions : ["admin.roles."]
     	},
     };
 
