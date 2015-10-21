@@ -17,7 +17,8 @@ angular.module('dashboard',[
 	'services.permissions',
 
 	'controller.home',
-	'controller.users'								
+	'controller.users',						
+	'controller.roles'						
 ])
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider){
