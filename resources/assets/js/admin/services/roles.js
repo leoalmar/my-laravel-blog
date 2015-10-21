@@ -1,6 +1,6 @@
 angular.module('services.roles', ['ngResource'])
 
-.factory('RolesService', function ($resource,$http){
+.factory('RolesService', function ($resource){
 
 	var URL = "/admin/roles";
 

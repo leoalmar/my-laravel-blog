@@ -74,7 +74,7 @@ angular.module('dashboard',[
 			templateUrl: "view/admin.users.index",
 			resolve: generalResolver(),
 			breadcrumbs : [{ label : 'Users' }],
-			add_button : { state : "user", text : "Users" }
+			add_button : { state : "user", text : "Add User" }
 		},
 		{
 			name : "user",
@@ -90,7 +90,16 @@ angular.module('dashboard',[
 			controller: "RolesCtrl",
 			templateUrl: "view/admin.roles.index",
 			resolve: generalResolver(),
-			breadcrumbs : [{ label : 'Roles', state : "roles" },{ label : 'Roles' }]
+			breadcrumbs : [{ label : 'Roles' }],
+			add_button : { state : "role", text : "Add Role" }
+		},
+		{
+			name : "role",
+			url: "/roles/role/:id",
+			controller: "RoleCtrl",
+			templateUrl: "view/admin.roles.role",
+			resolve: generalResolver(),
+			breadcrumbs : [{ label : 'Roles', state : "roles" },{ label : 'Role data' }]
 		}
 	];
 

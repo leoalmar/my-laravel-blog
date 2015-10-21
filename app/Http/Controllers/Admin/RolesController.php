@@ -23,16 +23,6 @@ class RolesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -40,7 +30,20 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $data = Request::json()->all();
+
+        $data['slug'] = str_slug($data['name']);
+
+        $role = Sentinel::getRoleRepository()->createModel()->create($data);
+        
+        $role->permissions = [
+            "admin.home" => true,
+        ];
+
+        $role->save();
+        
+        return response()->json(["success" => true, "role" => $role ], 201);
     }
 
     /**

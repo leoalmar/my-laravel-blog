@@ -6,7 +6,7 @@ angular.module('controller.roles',['services.roles'])
 
 	$scope.roles = RolesService.resource.query(function(data){
     	$scope.roles = data;
-    }); 
+    });
 
     $scope.delete = function(params){
     	params.role.$delete({id:params.role.id},function(){
