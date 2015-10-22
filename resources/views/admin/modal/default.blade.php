@@ -7,7 +7,6 @@
 			</div>
 			<div class="modal-body" ng-bind="content"></div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" ng-click="params.btn.ok.function(params.btn.ok.data)">{{ params.btn.ok.label }}</button>
 				<button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
 			</div>
 		</div>

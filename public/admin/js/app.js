@@ -178,14 +178,13 @@ angular.module('dashboard',[
 
 	angular.extend($modalProvider.defaults, {
 		animation: 'am-fade-and-scale',
-		placement: 'center',
-		templateUrl:'view/admin.modal.confirm'
+		placement: 'center'
 	});
 
 
 })
 
-.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,$parse,defaultErrorMessageResolver,UsersService) {
+.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,$parse,$modal,defaultErrorMessageResolver,UsersService) {
 
 	/*
 	 * Angular Auto Validate errors messages config
@@ -334,6 +333,39 @@ angular.module('dashboard',[
 			});
     };
 	
+    // Called when the OK button at Modal is clicked
+    $rootScope.modal = function(params){
+
+    	$rootScope.params = params;
+
+    	var templateUrl = 'view/admin.modal.' + (params.type || 'default');
+
+		var config = {
+			title: params.title,
+    		templateUrl: templateUrl, 
+    		show: true,
+    		scope: $rootScope
+    	};
+
+    	var modal = $modal(config);
+
+    	$rootScope.modal.hide = function() {
+    		modal.$promise.then(modal.hide);
+    	};
+
+    	/*
+    	params.role.$delete({id:params.role.id},function(){
+    		$scope.roles.splice(params.index,1);
+    	});
+		*/
+    };
+
+
+
+
+
+
+
 	$rootScope.getImage = function(image, width, height, effects) {
 
     	var file = image.split('.');
@@ -495,7 +527,7 @@ angular.module('controller.home',[])
 })
 angular.module('controller.roles',['services.roles'])
 
-.controller("RolesCtrl",function($rootScope,$scope,$state,$modal,RolesService){
+.controller("RolesCtrl",function($rootScope,$scope,$state,RolesService){
 
 	$scope.roles = [];
 
@@ -503,16 +535,11 @@ angular.module('controller.roles',['services.roles'])
     	$scope.roles = data;
     });
 
-
-	// Called when the OK button at Modal is clicked
-    $scope.ok = function(params){
-
-    	console.log($modal);
-    	/*
-    	params.role.$delete({id:params.role.id},function(){
-    		$scope.roles.splice(params.index,1);
+    $scope.delete = function(data){   	
+    	data.role.$delete({id:data.role.id},function(){
+    		$scope.roles.splice(data.index,1);
+    		$rootScope.modal.hide();
     	});
-		*/
     };
 
 })
