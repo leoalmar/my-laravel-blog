@@ -83,7 +83,7 @@ angular.module('dashboard',[
 	'controller.roles'						
 ])
 
-.config(function($httpProvider, $stateProvider, $urlRouterProvider){
+.config(function($httpProvider, $stateProvider, $urlRouterProvider, $modalProvider){
 	
 	/**
 	 * This function is used for the most of routes.
@@ -174,6 +174,14 @@ angular.module('dashboard',[
 	});
 
 	$httpProvider.interceptors.push('HttpInterceptor');
+
+
+	angular.extend($modalProvider.defaults, {
+		animation: 'am-fade-and-scale',
+		placement: 'center',
+		templateUrl:'view/admin.modal.confirm'
+	});
+
 
 })
 
@@ -487,7 +495,7 @@ angular.module('controller.home',[])
 })
 angular.module('controller.roles',['services.roles'])
 
-.controller("RolesCtrl",function($rootScope,$scope,$state,RolesService){
+.controller("RolesCtrl",function($rootScope,$scope,$state,$modal,RolesService){
 
 	$scope.roles = [];
 
@@ -495,10 +503,16 @@ angular.module('controller.roles',['services.roles'])
     	$scope.roles = data;
     });
 
-    $scope.delete = function(params){
+
+	// Called when the OK button at Modal is clicked
+    $scope.ok = function(params){
+
+    	console.log($modal);
+    	/*
     	params.role.$delete({id:params.role.id},function(){
     		$scope.roles.splice(params.index,1);
     	});
+		*/
     };
 
 })

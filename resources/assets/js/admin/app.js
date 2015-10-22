@@ -21,7 +21,7 @@ angular.module('dashboard',[
 	'controller.roles'						
 ])
 
-.config(function($httpProvider, $stateProvider, $urlRouterProvider){
+.config(function($httpProvider, $stateProvider, $urlRouterProvider, $modalProvider){
 	
 	/**
 	 * This function is used for the most of routes.
@@ -112,6 +112,14 @@ angular.module('dashboard',[
 	});
 
 	$httpProvider.interceptors.push('HttpInterceptor');
+
+
+	angular.extend($modalProvider.defaults, {
+		animation: 'am-fade-and-scale',
+		placement: 'center',
+		templateUrl:'view/admin.modal.confirm'
+	});
+
 
 })
 

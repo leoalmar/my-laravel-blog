@@ -12,7 +12,12 @@
 					<strong>{{ role.name }}</strong>
 				</td>
 				<td class="text-center">
-					<button class="btn btn-sm btn-primary" ui-sref="role({id:role.id})" tooltip="Edit role data" ><i class="fa fa-fw fa-pencil"></i></button>
+					<button class="btn btn-sm btn-primary" ui-sref="role({id:role.id})" bs-tooltip="{ title: 'Edit role data' }" ><i class="fa fa-fw fa-pencil"></i></button>
+					<button class="btn btn-sm btn-danger" 
+							bs-tooltip="{ title: 'Delete Role'}" 
+							bs-modal="{title:'Delete Role',buttons:{ok:{label:'Delete Role',params:{function:'delete',data:role}}}}" >
+						<i class="fa fa-fw fa-trash"></i>
+					</button>
 				</td>
 			</tr>
 		</tbody>

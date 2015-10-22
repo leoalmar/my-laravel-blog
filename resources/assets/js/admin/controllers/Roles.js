@@ -1,6 +1,6 @@
 angular.module('controller.roles',['services.roles'])
 
-.controller("RolesCtrl",function($rootScope,$scope,$state,RolesService){
+.controller("RolesCtrl",function($rootScope,$scope,$state,$modal,RolesService){
 
 	$scope.roles = [];
 
@@ -8,10 +8,16 @@ angular.module('controller.roles',['services.roles'])
     	$scope.roles = data;
     });
 
-    $scope.delete = function(params){
+
+	// Called when the OK button at Modal is clicked
+    $scope.ok = function(params){
+
+    	console.log($modal);
+    	/*
     	params.role.$delete({id:params.role.id},function(){
     		$scope.roles.splice(params.index,1);
     	});
+		*/
     };
 
 })
