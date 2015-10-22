@@ -344,6 +344,8 @@ angular.module('dashboard',[
 			title: params.title,
     		templateUrl: templateUrl, 
     		show: true,
+    		html: true,
+    		content: params.content,
     		scope: $rootScope
     	};
 

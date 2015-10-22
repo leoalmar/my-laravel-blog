@@ -15,7 +15,21 @@
 					<button class="btn btn-sm btn-primary" ui-sref="role({id:role.id})" bs-tooltip="{ title: 'Edit role data' }" ><i class="fa fa-fw fa-pencil"></i></button>
 					<button class="btn btn-sm btn-danger" 
 							bs-tooltip="{ title: 'Delete Role'}" 
-							ng-click="modal({title:'Delete Role',type:'confirm',btn:{ok:{label:'Delete Role',function:delete,data:{role:role,index:index}}}})" >
+							ng-click="modal({
+											type:'confirm',
+											title:'Delete Role',
+											content: 'Are you sure you want to delete the role <strong>'+role.name+'</strong>?',
+											btn:{
+												ok:{
+													label:'Delete Role',
+													function:delete,
+													data:{
+														role:role,
+														index:index
+													}
+												}
+											}
+										})" >
 						<i class="fa fa-fw fa-trash"></i>
 					</button>
 				</td>
