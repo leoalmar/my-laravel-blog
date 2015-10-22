@@ -292,12 +292,7 @@ angular.module('dashboard',[
     	$rootScope.modal.hide = function() {
     		modal.$promise.then(modal.hide);
     	};
-
-    	/*
-    	params.role.$delete({id:params.role.id},function(){
-    		$scope.roles.splice(params.index,1);
-    	});
-		*/
+    	
     };
 
 

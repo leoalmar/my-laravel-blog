@@ -54,18 +54,9 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $role = Sentinel::findRoleById($id);
+        
+        return response()->json($role);
     }
 
     /**
@@ -77,7 +68,25 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $role = Sentinel::findRoleByID($id);
+        
+        $data = Request::json()->all();
+
+        // Update the role details
+        $role->name   = $data["name"];
+
+        // Update the role
+        if ($role->save())
+        {
+            // role information was updated
+        }
+        else
+        {
+            // role information was not updated
+        }
+
+        return response()->json($role,200);
     }
 
     /**
@@ -88,6 +97,9 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        Sentinel::findRoleById($id)->delete();
+
+        return response(["success" => true]);
     }
 }
