@@ -17,7 +17,25 @@
 				</td>
 				<td class="text-center">
 					<button class="btn btn-sm btn-primary" ui-sref="user({id:user.id})" tooltip="Edit user data" ><i class="fa fa-fw fa-pencil"></i></button>
-					<button class="btn btn-sm btn-danger" ng-click="modal.confirm({ ok:{ func:delete, params:{ user:user, index:index } }, title:'Atenção!', body:'<strong>Tem certeza que deseja deletar este usuário permanentemente?</strong>'})" tooltip="Excluir usuário"><i class="fa fa-fw fa-trash"></i></button>
+					<button class="btn btn-sm btn-danger" 
+							bs-tooltip="{ title: 'Delete User'}" 
+							ng-click="modal({
+											type:'confirm',
+											title:'Delete user',
+											content: 'Are you sure you want to delete the User <strong>'+user.first_name+'</strong>?',
+											btn:{
+												ok:{
+													label:'Delete User',
+													function:delete,
+													data:{
+														user:user,
+														index:index
+													}
+												}
+											}
+										})" >
+						<i class="fa fa-fw fa-trash"></i>
+					</button>
 				</td>
 			</tr>
 		</tbody>

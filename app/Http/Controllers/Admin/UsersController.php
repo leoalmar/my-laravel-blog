@@ -99,12 +99,7 @@ class UsersController extends Controller {
 	public function destroy($id)
 	{
 		// Find the user using the user id
-	    $user = Sentinel::findUserById($id);
-	    
-		if($user->image) parent::removeFile($user->image, "img/users");
-	    
-	    // Delete the user
-	    $user->delete();
+	    $user = Sentinel::findUserById($id)->delete();
 
 		return response()->json(["success" => true]);
 	}

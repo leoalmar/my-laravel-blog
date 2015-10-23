@@ -31,11 +31,12 @@ angular.module('controller.users',[])
 
 	$scope.users = UsersService.resource.query(function(data){
     	$scope.users = data;
-    }); 
+    });
 
-    $scope.delete = function(params){
-    	params.user.$delete({id:params.user.id},function(){
-    		$scope.users.splice(params.index,1);
+    $scope.delete = function(data){
+    	data.user.$delete({id:data.user.id},function(){
+    		$scope.users.splice(data.index,1);
+    		$rootScope.modal.hide();
     	});
     };
 
