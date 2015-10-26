@@ -2,7 +2,6 @@
 # Laravel directories and files
 # ================================
 /vendor
-/storage
 /node_modules
 Homestead.yaml
 Homestead.json
