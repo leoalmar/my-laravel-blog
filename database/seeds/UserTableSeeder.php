@@ -14,11 +14,19 @@ class UserTableSeeder extends Seeder {
 	public function run()
 	{
 
+		DB::table('activations')->truncate();
+		DB::table('persistences')->truncate();
+		DB::table('reminders')->truncate();
+		DB::table('throttle')->truncate();
+		DB::table('role_users')->truncate();
+		DB::table('roles')->truncate();
+		DB::table('users')->truncate();
+
 		$user = Sentinel::registerAndActivate([
 		    'email'    => 'admin@my-laravel-blog.com',
 		    'password' => 'password',
-		    'first_name' => 'Softzar',
-		    'last_name' => 'Administrator',
+		    'first_name' => 'Administrator',
+		    'last_name' => 'Blog',
 		]);
 
 		$role = Sentinel::getRoleRepository()->createModel()->create([

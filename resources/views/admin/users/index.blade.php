@@ -17,7 +17,7 @@
 				</td>
 				<td class="text-center">
 					<button class="btn btn-sm btn-primary" ui-sref="user({id:user.id})" tooltip="Edit user data" ><i class="fa fa-fw fa-pencil"></i></button>
-					<button class="btn btn-sm btn-danger" 
+					<button ng-if="user.id != 1" class="btn btn-sm btn-danger" 
 							bs-tooltip="{ title: 'Delete User'}" 
 							ng-click="modal({
 											type:'confirm',
