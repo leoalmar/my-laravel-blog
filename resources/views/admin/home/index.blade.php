@@ -1,3 +1,3 @@
 <div class="text-center">
-	<h1>Painel Administrativo</h1>
+	<h1>Dashboard</h1>
 </div>
