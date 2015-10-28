@@ -13,7 +13,7 @@
 				</td>
 				<td class="text-center">
 					<button class="btn btn-sm btn-primary" ui-sref="role({id:role.id})" bs-tooltip="{ title: 'Edit role data' }" ><i class="fa fa-fw fa-pencil"></i></button>
-					<button class="btn btn-sm btn-danger" 
+					<button ng-if="role.id != 1" class="btn btn-sm btn-danger" 
 							bs-tooltip="{ title: 'Delete Role'}" 
 							ng-click="modal({
 											type:'confirm',
