@@ -36,7 +36,7 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label class="control-label" for="password_confirmation" ><span ng-if="add">*</span>Password confirmation</label>
-					<input class="form-control" type="password" id="password_confirmation" name="password_confirmation" ng-model="user.password_confirmation" ng-required="add" match-password="password">
+					<input class="form-control" type="password" id="password_confirmation" name="password_confirmation" ng-model="user.password_confirmation" ng-required="add || user.password" match-password="password">
 				</div>
 			</div>
 				
