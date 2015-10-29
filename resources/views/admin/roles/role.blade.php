@@ -10,7 +10,7 @@
 				<label for="name" class="label-control">Role data:</label>
 			</div>			
 			
-			<div class="row">				
+			<div class="row">
 				<div class="form-group col-md-4">
 					<label class="control-label" for="name" >*Name</label>
 					<input class="form-control" type="text" id="name" name="name" ng-model="role.name" maxlength="128" ng-minlength="3" required focus="true" >

@@ -129,12 +129,12 @@ class UsersController extends Controller {
 		return response(["success" => true],200);		
 	}
 
-	public function isUnique()
+	public function unique()
 	{
 
 		$data = Request::json()->all();
 
-		$user = Sentinel::findByCredentials(["email" => $data["email"]]);
+		$user = Sentinel::findByCredentials(["email" => $data["value"]]);
 
 		if( $user ){
 			

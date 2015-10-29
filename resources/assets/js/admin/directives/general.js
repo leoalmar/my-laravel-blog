@@ -1,38 +1,44 @@
 angular.module('directives.general',[])
 
-.directive('unique', function ($http,$q) {
+.directive('unique', function ($http,$timeout,$q) {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
+		scope: {
+			url: "@uniqueUrl",
+			resource: "=uniqueResource"
+		},
 		link: function (scope, element, attrs, ngModel) {
+
+			element.bind("keyup",function(e){
 	
-            var id = scope.user.id;
+				var value = $(this).val();
+				var resource = scope.resource;
 
-			var modelValue = ngModel.$modelValue;
-			var viewValue = ngModel.$viewValue;
-			var email = modelValue || viewValue;
+				$timeout(function(){
+					/*
+					ngModel.$asyncValidators.uniqueUser = function (value) {
+
+						var deferred = $q.defer();
+
+						$http.post(scope.url,{						
+							id : resource.id || 0,
+							value : value
+						}).then(function (results) {
+		                    if (results.data.success) {
+		                        deferred.resolve(); //It's unique
+		                    } else {
+		                        deferred.reject(); //Add unique to $errors
+		                    }
+		                });
+						return deferred.promise;
+		            };	
+		            */			
+				});
 			
-			setTimeout(function(){
-				
-				ngModel.$asyncValidators.uniqueUser = function (email) {
-
-					var deferred = $q.defer();
-
-					$http.post('/admin/is-unique',{
-						id : scope.user.id,
-						email : email
-					}).then(function (results) {
-	                    if (results.data.success) {
-	                        deferred.resolve(); //It's unique
-	                    } else {
-	                        deferred.reject(); //Add unique to $errors
-	                    }
-	                });
-					return deferred.promise;
-	            };
-
-			},0);
-
+			});
+			element.keyup();
+			
 		}
 	};
 })

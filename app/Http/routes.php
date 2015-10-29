@@ -31,7 +31,7 @@ $router->group(['prefix' => 'admin'], function() use ($router) {
 		Route::resource('users', 'Admin\UsersController');
 		Route::resource('roles', 'Admin\RolesController');
 		Route::resource('permissions', 'Admin\PermissionsController');
-		Route::post('is-unique', ['as' => 'admin.users.is_unique', 'uses' => 'Admin\UsersController@isUnique']); 
+		Route::post('unique/email', ['as' => 'admin.users.unique', 'uses' => 'Admin\UsersController@unique']); 
 		
 
 	});

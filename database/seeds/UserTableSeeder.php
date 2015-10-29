@@ -44,7 +44,7 @@ class UserTableSeeder extends Seeder {
 			"admin.users.show" => true,
 			"admin.users.store" => true,
 			"admin.users.update" => true,
-			"admin.users.is_unique" => true,
+			"admin.users.unique" => true,
 
 			"admin.roles.create" => true,
 			"admin.roles.destroy" => true,
@@ -53,6 +53,7 @@ class UserTableSeeder extends Seeder {
 			"admin.roles.show" => true,
 			"admin.roles.store" => true,
 			"admin.roles.update" => true,
+			"admin.roles.unique" => true,
 
 		];
 
