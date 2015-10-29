@@ -4,9 +4,7 @@
 
 /* ================ SITE'S ROUTES ============================================================= */
 $router->group(['as' => 'site.'], function() {
-
 	Route::get('/', ['as' => 'home', 'uses' => 'Site\HomeController@index']);
-
 });
 /* ============================================================================================= */
 
@@ -19,21 +17,16 @@ $router->group(['prefix' => 'admin'], function() use ($router) {
 	
 	Route::post('authenticate', ['as' => 'admin.authenticate', 'uses' => 'Admin\UsersController@login' ]);
 	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Admin\UsersController@logout' ]);
-	
 
+	$router->group(['middleware' => ['AdminAuth']], function() {
 
-	$router->group(['middleware' => ['AdminAuth']], function() { 
-
-		Route::get('check', ['as' => 'admin.check', 'uses' => 'Admin\UsersController@check']); 
-
-
+		Route::get('check', ['as' => 'admin.check', 'uses' => 'Admin\UsersController@check']);
 
 		Route::resource('users', 'Admin\UsersController');
 		Route::resource('roles', 'Admin\RolesController');
 		Route::resource('permissions', 'Admin\PermissionsController');
-		Route::post('unique/email', ['as' => 'admin.users.unique', 'uses' => 'Admin\UsersController@unique']); 
+		Route::post('unique/email', ['as' => 'admin.users.unique', 'uses' => 'Admin\UsersController@unique']);
 		
-
 	});
 });
 

@@ -10,35 +10,23 @@ angular.module('directives.general',[])
 		},
 		link: function (scope, element, attrs, ngModel) {
 
-			element.bind("keyup",function(e){
-	
+			element.on('blur',unique);
+			element.on('change',unique);
+			element.bind("keyup",unique);
+
+			function unique(){
+
 				var value = $(this).val();
 				var resource = scope.resource;
 
-				$timeout(function(){
-					/*
-					ngModel.$asyncValidators.uniqueUser = function (value) {
+				$http.post(scope.url,{						
+					id : resource.id || 0,
+					value : value
+				}).then(function (results) {
+                    ngModel.$setValidity('uniqueUser', results.data.success);
+                });
+			}
 
-						var deferred = $q.defer();
-
-						$http.post(scope.url,{						
-							id : resource.id || 0,
-							value : value
-						}).then(function (results) {
-		                    if (results.data.success) {
-		                        deferred.resolve(); //It's unique
-		                    } else {
-		                        deferred.reject(); //Add unique to $errors
-		                    }
-		                });
-						return deferred.promise;
-		            };	
-		            */			
-				});
-			
-			});
-			element.keyup();
-			
 		}
 	};
 })
