@@ -122,8 +122,12 @@ angular.module('dashboard',[
 
 })
 
-.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,$parse,$modal,defaultErrorMessageResolver,UsersService) {
+.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,$parse,$modal,validator,defaultErrorMessageResolver,UsersService) {
 
+    
+
+    validator.setValidElementStyling(false);
+    
 	/*
 	 * Angular Auto Validate errors messages config
 	 */

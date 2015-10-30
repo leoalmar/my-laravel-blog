@@ -8,25 +8,39 @@ angular.module('directives.general',[])
 			url: "@uniqueUrl",
 			resource: "=uniqueResource"
 		},
-		link: function (scope, element, attrs, ngModel) {
+		link: function (scope, element, attrs, ctrl) {
 
 			element.on('blur',unique);
 			element.on('change',unique);
 			element.bind("keyup",unique);
 
+			var resource = scope.resource;
+
 			function unique(){
 
 				var value = $(this).val();
-				var resource = scope.resource;
 
 				$http.post(scope.url,{						
 					id : resource.id || 0,
 					value : value
 				}).then(function (results) {
-                    ngModel.$setValidity('uniqueUser', results.data.success);
+                    ctrl.$setValidity('uniqueUser', results.data.success);
                 });
 			}
+			/*
+			ctrl.$asyncValidators.unique = function (modelValue) {
 
+				var deferred = $q.defer();
+
+                if ( unique() ) {
+                    deferred.resolve(); //It's unique
+                } else {
+                    deferred.reject(); //Add unique to $errors
+                }
+
+				return deferred.promise;
+            };	
+			*/
 		}
 	};
 })

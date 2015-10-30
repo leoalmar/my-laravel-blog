@@ -42,11 +42,16 @@ angular.module('controller.users',[])
 
 })
 
-.controller("UserCtrl",function($rootScope,$scope,$state,$stateParams,UsersService,fileReader){
+.controller("UserCtrl",function($rootScope,$scope,$state,$stateParams,$timeout,UsersService,fileReader){
 
+	$scope.form = {};
 	$scope.loading = false;
 
 	$scope.add = ($stateParams.id == ""); // Check if the page is Creating ou Updating resource
+
+	$timeout(function(){
+		
+	},1);
 
 	if($scope.add)
 	{

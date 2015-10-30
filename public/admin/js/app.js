@@ -8,7 +8,6 @@
 //# sourceMappingURL=angular-ckeditor.min.map
 !function(r){"use strict";r.module("ngPassword",[]).directive("matchPassword",function(){function r(r,s,a,e){var o=e[1],t=e[0],n=o[a.matchPassword];t.$validators?t.$validators.passwordMatch=function(r){return r===n.$modelValue}:(t.$parsers.push(function(r){return t.$setValidity("passwordMatch",r===n.$viewValue),r}),n.$parsers.push(function(r){return t.$setValidity("passwordMatch",r===t.$viewValue),r}))}var s=["^ngModel","^form"];return{restrict:"A",require:s,link:r}}),r.module("angular.password",["ngPassword"]),r.module("angular-password",["ngPassword"]),"object"==typeof module&&"function"!=typeof define&&(module.exports=r.module("ngPassword"))}(angular);
 
-"use strict";(function(){var mod=angular.module("slugifier",[]);var charmap={" ":" ","¡":"!","¢":"c","£":"lb","¥":"yen","¦":"|","§":"SS","¨":'"',"©":"(c)","ª":"a","«":"<<","¬":"not","":"-","®":"(R)","°":"^0","±":"+/-","²":"^2","³":"^3","´":"'","µ":"u","¶":"P","·":".","¸":",","¹":"^1","º":"o","»":">>","¼":" 1/4 ","½":" 1/2 ","¾":" 3/4 ","¿":"?","À":"`A","Á":"'A","Â":"^A","Ã":"~A","Ä":'"A',"Å":"A","Æ":"AE","Ç":"C","È":"`E","É":"'E","Ê":"^E","Ë":'"E',"Ì":"`I","Í":"'I","Î":"^I","Ï":'"I',"Ð":"D","Ñ":"~N","Ò":"`O","Ó":"'O","Ô":"^O","Õ":"~O","Ö":'"O',"×":"x","Ø":"O","Ù":"`U","Ú":"'U","Û":"^U","Ü":'"U',"Ý":"'Y","Þ":"Th","ß":"ss","à":"`a","á":"'a","â":"^a","ã":"~a","ä":'"a',"å":"a","æ":"ae","ç":"c","è":"`e","é":"'e","ê":"^e","ë":'"e',"ì":"`i","í":"'i","î":"^i","ï":'"i',"ð":"d","ñ":"~n","ò":"`o","ó":"'o","ô":"^o","õ":"~o","ö":'"o',"÷":":","ø":"o","ù":"`u","ú":"'u","û":"^u","ü":'"u',"ý":"'y","þ":"th","ÿ":'"y',"Ā":"A","ā":"a","Ă":"A","ă":"a","Ą":"A","ą":"a","Ć":"'C","ć":"'c","Ĉ":"^C","ĉ":"^c","Ċ":"C","ċ":"c","Č":"C","č":"c","Ď":"D","ď":"d","Đ":"D","đ":"d","Ē":"E","ē":"e","Ĕ":"E","ĕ":"e","Ė":"E","ė":"e","Ę":"E","ę":"e","Ě":"E","ě":"e","Ĝ":"^G","ĝ":"^g","Ğ":"G","ğ":"g","Ġ":"G","ġ":"g","Ģ":"G","ģ":"g","Ĥ":"^H","ĥ":"^h","Ħ":"H","ħ":"h","Ĩ":"~I","ĩ":"~i","Ī":"I","ī":"i","Ĭ":"I","ĭ":"i","Į":"I","į":"i","İ":"I","ı":"i","Ĳ":"IJ","ĳ":"ij","Ĵ":"^J","ĵ":"^j","Ķ":"K","ķ":"k","Ĺ":"L","ĺ":"l","Ļ":"L","ļ":"l","Ľ":"L","ľ":"l","Ŀ":"L","ŀ":"l","Ł":"L","ł":"l","Ń":"'N","ń":"'n","Ņ":"N","ņ":"n","Ň":"N","ň":"n","ŉ":"'n","Ō":"O","ō":"o","Ŏ":"O","ŏ":"o","Ő":'"O',"ő":'"o',"Œ":"OE","œ":"oe","Ŕ":"'R","ŕ":"'r","Ŗ":"R","ŗ":"r","Ř":"R","ř":"r","Ś":"'S","ś":"'s","Ŝ":"^S","ŝ":"^s","Ş":"S","ş":"s","Š":"S","š":"s","Ţ":"T","ţ":"t","Ť":"T","ť":"t","Ŧ":"T","ŧ":"t","Ũ":"~U","ũ":"~u","Ū":"U","ū":"u","Ŭ":"U","ŭ":"u","Ů":"U","ů":"u","Ű":'"U',"ű":'"u',"Ų":"U","ų":"u","Ŵ":"^W","ŵ":"^w","Ŷ":"^Y","ŷ":"^y","Ÿ":'"Y',"Ź":"'Z","ź":"'z","Ż":"Z","ż":"z","Ž":"Z","ž":"z","ſ":"s"};function _slugify(s){if(!s){return""}var ascii=[];var ch,cp;for(var i=0;i<s.length;i++){if((cp=s.charCodeAt(i))<384){ch=String.fromCharCode(cp);ascii.push(charmap[ch]||ch)}}s=ascii.join("");s=s.replace(/[^\w\s-]/g,"").trim().toLowerCase();return s.replace(/[-\s]+/g,"-")}mod.factory("Slug",function(){return{slugify:_slugify}});mod.directive("slug",["Slug",function(Slug){return{restrict:"E",scope:{to:"="},transclude:true,replace:true,template:"<div ng-transclude></div>",link:function(scope,elem,attrs){if(!attrs.from){throw"must set attribute 'from'"}scope.$parent.$watch(attrs.from,function(val){scope.to=Slug.slugify(val)})}}}]);mod.filter("slugify",function(Slug){return function(input){return Slug.slugify(input)}})})();
 /**
  * angular-strap
  * @version v2.3.3 - 2015-09-24
@@ -37,6 +36,7 @@ n.push({date:t,label:u(t,this.format),selected:i.$isSelected(t),disabled:this.is
  */
 'use strict';angular.module('mgcrea.ngStrap.helpers.dimensions',[]).factory('dimensions',['$document','$window',function(t,e){var o=(angular.element,{}),n=o.nodeName=function(t,e){return t.nodeName&&t.nodeName.toLowerCase()===e.toLowerCase()};o.css=function(t,e,o){var n;return n=t.currentStyle?t.currentStyle[e]:window.getComputedStyle?window.getComputedStyle(t)[e]:t.style[e],o===!0?parseFloat(n)||0:n},o.offset=function(t){var e=t.getBoundingClientRect(),o=t.ownerDocument;return{width:e.width||t.offsetWidth,height:e.height||t.offsetHeight,top:e.top+(window.pageYOffset||o.documentElement.scrollTop)-(o.documentElement.clientTop||0),left:e.left+(window.pageXOffset||o.documentElement.scrollLeft)-(o.documentElement.clientLeft||0)}},o.setOffset=function(t,e,n){var s,i,r,f,c,l,d,a=o.css(t,'position'),u=angular.element(t),p={};'static'===a&&(t.style.position='relative'),c=o.offset(t),r=o.css(t,'top'),l=o.css(t,'left'),d=('absolute'===a||'fixed'===a)&&(r+l).indexOf('auto')>-1,d?(s=o.position(t),f=s.top,i=s.left):(f=parseFloat(r)||0,i=parseFloat(l)||0),angular.isFunction(e)&&(e=e.call(t,n,c)),null!==e.top&&(p.top=e.top-c.top+f),null!==e.left&&(p.left=e.left-c.left+i),'using'in e?e.using.call(u,p):u.css({top:p.top+'px',left:p.left+'px'})},o.position=function(t){var e,i,r={top:0,left:0};return'fixed'===o.css(t,'position')?i=t.getBoundingClientRect():(e=s(t),i=o.offset(t),n(e,'html')||(r=o.offset(e)),r.top+=o.css(e,'borderTopWidth',!0),r.left+=o.css(e,'borderLeftWidth',!0)),{width:t.offsetWidth,height:t.offsetHeight,top:i.top-r.top-o.css(t,'marginTop',!0),left:i.left-r.left-o.css(t,'marginLeft',!0)}};var s=function(t){var e=t.ownerDocument,s=t.offsetParent||e;if(n(s,'#document'))return e.documentElement;for(;s&&!n(s,'html')&&'static'===o.css(s,'position');)s=s.offsetParent;return s||e.documentElement};return o.height=function(t,e){var n=t.offsetHeight;return e?n+=o.css(t,'marginTop',!0)+o.css(t,'marginBottom',!0):n-=o.css(t,'paddingTop',!0)+o.css(t,'paddingBottom',!0)+o.css(t,'borderTopWidth',!0)+o.css(t,'borderBottomWidth',!0),n},o.width=function(t,e){var n=t.offsetWidth;return e?n+=o.css(t,'marginLeft',!0)+o.css(t,'marginRight',!0):n-=o.css(t,'paddingLeft',!0)+o.css(t,'paddingRight',!0)+o.css(t,'borderLeftWidth',!0)+o.css(t,'borderRightWidth',!0),n},o}]);
 //# sourceMappingURL=../modules/dimensions.min.js.map
+"use strict";(function(){var mod=angular.module("slugifier",[]);var charmap={" ":" ","¡":"!","¢":"c","£":"lb","¥":"yen","¦":"|","§":"SS","¨":'"',"©":"(c)","ª":"a","«":"<<","¬":"not","":"-","®":"(R)","°":"^0","±":"+/-","²":"^2","³":"^3","´":"'","µ":"u","¶":"P","·":".","¸":",","¹":"^1","º":"o","»":">>","¼":" 1/4 ","½":" 1/2 ","¾":" 3/4 ","¿":"?","À":"`A","Á":"'A","Â":"^A","Ã":"~A","Ä":'"A',"Å":"A","Æ":"AE","Ç":"C","È":"`E","É":"'E","Ê":"^E","Ë":'"E',"Ì":"`I","Í":"'I","Î":"^I","Ï":'"I',"Ð":"D","Ñ":"~N","Ò":"`O","Ó":"'O","Ô":"^O","Õ":"~O","Ö":'"O',"×":"x","Ø":"O","Ù":"`U","Ú":"'U","Û":"^U","Ü":'"U',"Ý":"'Y","Þ":"Th","ß":"ss","à":"`a","á":"'a","â":"^a","ã":"~a","ä":'"a',"å":"a","æ":"ae","ç":"c","è":"`e","é":"'e","ê":"^e","ë":'"e',"ì":"`i","í":"'i","î":"^i","ï":'"i',"ð":"d","ñ":"~n","ò":"`o","ó":"'o","ô":"^o","õ":"~o","ö":'"o',"÷":":","ø":"o","ù":"`u","ú":"'u","û":"^u","ü":'"u',"ý":"'y","þ":"th","ÿ":'"y',"Ā":"A","ā":"a","Ă":"A","ă":"a","Ą":"A","ą":"a","Ć":"'C","ć":"'c","Ĉ":"^C","ĉ":"^c","Ċ":"C","ċ":"c","Č":"C","č":"c","Ď":"D","ď":"d","Đ":"D","đ":"d","Ē":"E","ē":"e","Ĕ":"E","ĕ":"e","Ė":"E","ė":"e","Ę":"E","ę":"e","Ě":"E","ě":"e","Ĝ":"^G","ĝ":"^g","Ğ":"G","ğ":"g","Ġ":"G","ġ":"g","Ģ":"G","ģ":"g","Ĥ":"^H","ĥ":"^h","Ħ":"H","ħ":"h","Ĩ":"~I","ĩ":"~i","Ī":"I","ī":"i","Ĭ":"I","ĭ":"i","Į":"I","į":"i","İ":"I","ı":"i","Ĳ":"IJ","ĳ":"ij","Ĵ":"^J","ĵ":"^j","Ķ":"K","ķ":"k","Ĺ":"L","ĺ":"l","Ļ":"L","ļ":"l","Ľ":"L","ľ":"l","Ŀ":"L","ŀ":"l","Ł":"L","ł":"l","Ń":"'N","ń":"'n","Ņ":"N","ņ":"n","Ň":"N","ň":"n","ŉ":"'n","Ō":"O","ō":"o","Ŏ":"O","ŏ":"o","Ő":'"O',"ő":'"o',"Œ":"OE","œ":"oe","Ŕ":"'R","ŕ":"'r","Ŗ":"R","ŗ":"r","Ř":"R","ř":"r","Ś":"'S","ś":"'s","Ŝ":"^S","ŝ":"^s","Ş":"S","ş":"s","Š":"S","š":"s","Ţ":"T","ţ":"t","Ť":"T","ť":"t","Ŧ":"T","ŧ":"t","Ũ":"~U","ũ":"~u","Ū":"U","ū":"u","Ŭ":"U","ŭ":"u","Ů":"U","ů":"u","Ű":'"U',"ű":'"u',"Ų":"U","ų":"u","Ŵ":"^W","ŵ":"^w","Ŷ":"^Y","ŷ":"^y","Ÿ":'"Y',"Ź":"'Z","ź":"'z","Ż":"Z","ż":"z","Ž":"Z","ž":"z","ſ":"s"};function _slugify(s){if(!s){return""}var ascii=[];var ch,cp;for(var i=0;i<s.length;i++){if((cp=s.charCodeAt(i))<384){ch=String.fromCharCode(cp);ascii.push(charmap[ch]||ch)}}s=ascii.join("");s=s.replace(/[^\w\s-]/g,"").trim().toLowerCase();return s.replace(/[-\s]+/g,"-")}mod.factory("Slug",function(){return{slugify:_slugify}});mod.directive("slug",["Slug",function(Slug){return{restrict:"E",scope:{to:"="},transclude:true,replace:true,template:"<div ng-transclude></div>",link:function(scope,elem,attrs){if(!attrs.from){throw"must set attribute 'from'"}scope.$parent.$watch(attrs.from,function(val){scope.to=Slug.slugify(val)})}}}]);mod.filter("slugify",function(Slug){return function(input){return Slug.slugify(input)}})})();
 /*!
  * angular-ui-mask
  * https://github.com/angular-ui/ui-mask
@@ -184,8 +184,12 @@ angular.module('dashboard',[
 
 })
 
-.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,$parse,$modal,defaultErrorMessageResolver,UsersService) {
+.run(function($rootScope,$state,$stateParams,$modal,$http,$q,$timeout,$parse,$modal,validator,defaultErrorMessageResolver,UsersService) {
 
+    
+
+    validator.setValidElementStyling(false);
+    
 	/*
 	 * Angular Auto Validate errors messages config
 	 */
@@ -628,11 +632,16 @@ angular.module('controller.users',[])
 
 })
 
-.controller("UserCtrl",function($rootScope,$scope,$state,$stateParams,UsersService,fileReader){
+.controller("UserCtrl",function($rootScope,$scope,$state,$stateParams,$timeout,UsersService,fileReader){
 
+	$scope.form = {};
 	$scope.loading = false;
 
 	$scope.add = ($stateParams.id == ""); // Check if the page is Creating ou Updating resource
+
+	$timeout(function(){
+		
+	},1);
 
 	if($scope.add)
 	{
@@ -953,25 +962,39 @@ angular.module('directives.general',[])
 			url: "@uniqueUrl",
 			resource: "=uniqueResource"
 		},
-		link: function (scope, element, attrs, ngModel) {
+		link: function (scope, element, attrs, ctrl) {
 
 			element.on('blur',unique);
 			element.on('change',unique);
 			element.bind("keyup",unique);
 
+			var resource = scope.resource;
+
 			function unique(){
 
 				var value = $(this).val();
-				var resource = scope.resource;
 
 				$http.post(scope.url,{						
 					id : resource.id || 0,
 					value : value
 				}).then(function (results) {
-                    ngModel.$setValidity('uniqueUser', results.data.success);
+                    ctrl.$setValidity('uniqueUser', results.data.success);
                 });
 			}
+			/*
+			ctrl.$asyncValidators.unique = function (modelValue) {
 
+				var deferred = $q.defer();
+
+                if ( unique() ) {
+                    deferred.resolve(); //It's unique
+                } else {
+                    deferred.reject(); //Add unique to $errors
+                }
+
+				return deferred.promise;
+            };	
+			*/
 		}
 	};
 })
