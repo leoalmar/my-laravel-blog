@@ -3,8 +3,8 @@
 		<thead>				
 			<tr>
 				<th style="width:50px;" class="text-center"></th>
-				<th>Usuário</th>
-				<th style="width:150px;" class="text-center">Opções</th>
+				<th>User</th>
+				<th style="width:150px;" class="text-center">Options</th>
 			</tr>
 		</thead>
 		<tbody>
