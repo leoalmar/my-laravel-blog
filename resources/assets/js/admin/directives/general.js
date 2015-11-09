@@ -26,21 +26,7 @@ angular.module('directives.general',[])
 				}).then(function (results) {
                     ctrl.$setValidity('uniqueUser', results.data.success);
                 });
-			}
-			/*
-			ctrl.$asyncValidators.unique = function (modelValue) {
-
-				var deferred = $q.defer();
-
-                if ( unique() ) {
-                    deferred.resolve(); //It's unique
-                } else {
-                    deferred.reject(); //Add unique to $errors
-                }
-
-				return deferred.promise;
-            };	
-			*/
+			}		
 		}
 	};
 })
